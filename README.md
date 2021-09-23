@@ -1,2 +1,3 @@
 # YouSync
-Watch YouTube videos and listen to music with the new synchronization platform
+
+YouTubeの動画や音楽を同期視聴できる新しいプラットフォームです．
