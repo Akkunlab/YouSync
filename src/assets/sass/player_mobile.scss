@@ -4,7 +4,6 @@
 $animation-duration: 50s;
 $playlist-min-height: 50px;
 $transition-duration: 1s;
-$min-width: 320px;
 
 /*------------------------------------
   Bar
@@ -45,7 +44,7 @@ $min-width: 320px;
 .main_wrap {
   $video-title-line-height: 32px;
   
-  min-width: $min-width;
+  min-width: $main-min-width;
   text-align: center;
 
   /* テキスト */
