@@ -1,4 +1,5 @@
 node_modules/
+public/js/room.js
 test/
 *.env
 *.bat
