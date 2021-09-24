@@ -7,8 +7,8 @@ io.on('connection', socket => {
 
   // プレイヤーボタンクリック
   socket.on("playerButton", data => {
-    socket.emit("playerButton", data);
-    console.log(data); // ログ出力
+    io.emit("playerButton", data);
+    console.log(`[socket: playerButton] get ${data}`); // ログ出力
   });
 });
 
