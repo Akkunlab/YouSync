@@ -1,2 +1,7 @@
 node_modules/
+public/js/room.js
 src/assets/css
+test/
+*.env
+*.bat
+*.json
