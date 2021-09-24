@@ -123,7 +123,7 @@
 
     <!-- ▼ js ▼ -->
     <script src="/socket.io/socket.io.js"></script>
-    <!-- <script>const room = JSON.parse('<%- room %>');</script> -->
+    <script>const getData = '<%- room %>'; const room = getData ? JSON.parse(getData) : null;</script>
     <script type="module" src="/js/room.js"></script>
     
 </body>
