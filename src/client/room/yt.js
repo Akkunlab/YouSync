@@ -48,6 +48,7 @@ const controlYT = {
 
   onReady(event) { // プレイヤー準備時
     controlYT.setVolume(event.target.getVolume()); // 初期音量設定
+    event.target.mute(); // ミュート
     event.target.playVideo(); // 動画再生
     document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title;  // タイトル表示
 
@@ -66,7 +67,8 @@ const controlYT = {
 
     switch (event.data) {
       case -1: stateIns = '未開始'; break;
-      case 0: stateIns = '終了';
+      case 0:
+        stateIns = '終了';
         clearInterval(timeUpdater);
         break;
       case  1: stateIns = '再生中'; break;
@@ -119,6 +121,11 @@ const controlYT = {
 };
 
 /* リサイズ */
-window.onresize = () => player.setSize(controlYT.setSize('width'), controlYT.setSize('height'));
+window.onresize = () => {
+  player.setSize(
+    controlYT.setSize('width'),
+    controlYT.setSize('height')
+  );
+}
 
 export { initYT, controlYT };

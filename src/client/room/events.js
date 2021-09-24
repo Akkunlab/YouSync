@@ -20,7 +20,7 @@ const events = {
 
     if (type === 'play_pause') type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断
     
-    socketEvents.send('playerButton', type); // socket.ioで送信
+    socketEvents.send('playerButton', type); // 送信
   }
 
 };

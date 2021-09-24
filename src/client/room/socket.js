@@ -9,7 +9,7 @@ const socketEvents = {
 
     send(eventName, data) { // データ送信
         socket.emit(eventName, data);
-        console.log('[socket] send data');
+        console.log(`[socket: ${eventName}] send ${data}`);
     }
 
 };
