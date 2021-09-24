@@ -1,9 +1,9 @@
 /* 初期化 */
 const init = () => {
     const Height = 50;
-    const player = document.getElementById("player");
-    const playlist = document.getElementById("playlist_content");
-    const coordinate = window.innerHeight - player.clientHeight - (Height * 2);
+    const player = document.getElementById('player');
+    const playlist = document.getElementById('playlist_content');
+    const coordinate = window.innerHeight - player.clientHeight - Height;
 
     playlist.style.height = `${coordinate}px`;
 }
@@ -12,11 +12,11 @@ init(); // 初期化
 /* Playlist 移動 */
 let isPlaylist = false;
 document.getElementById('playlist_toggle').addEventListener('change', () => {
-    const playlistHeight = 50;
-    const playlist = document.getElementById("playlist");
+    const playlist = document.getElementById('playlist');
     const top = document.getElementById('video_detail').getBoundingClientRect().top;
-    const coordinate = window.innerHeight - top - playlistHeight;
-
+    const coordinate = window.innerHeight - top;
+    
+    document.getElementById('bar').classList.toggle('is-hidden'); // barを非表示
     playlist.style.cssText = isPlaylist ? 'transform: translateY(0);' : `transform: translateY(-${coordinate}px);`;
     isPlaylist = !isPlaylist;
 });
