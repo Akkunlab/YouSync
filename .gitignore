@@ -1,2 +1,5 @@
 node_modules/
-src/assets/css
+test/
+*.env
+*.bat
+*.json
