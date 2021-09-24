@@ -2,8 +2,8 @@ import { config } from "./config";
 import { controlYT } from "./yt";
 
 /* 基本設定 */
-const ioTime = io(`${config.host}/io_time`);  // 時刻同期
-const ioSet = io(`${config.host}/io_set`);    // 設定
+// const ioTime = io(`${config.host}/io_time`);  // 時刻同期
+// const ioSet = io(`${config.host}/io_set`);    // 設定
 
 /* イベント */
 const socketEvents = {

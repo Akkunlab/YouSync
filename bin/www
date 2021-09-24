@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('yousync:server');
 var http = require('http');
-var socketFunction = require('../src/server/socket'); // socket.io
+var socketapi = require("../src/server/socketapi"); // socket.io
 
 /**
  * Get port from environment and store in Express.
@@ -26,9 +26,7 @@ var server = http.createServer(app);
  * Socket.io
  */
 
-var io = require('socket.io')(server);
-var ioSet = io.of('/io_set').on('connection', socket => socketFunction.set(ioSet, socket));
-var ioTime = io.of('/io_set').on('connection', socket => socketFunction.time(ioTime, socket));
+ socketapi.io.attach(server);
 
 /**
  * Listen on provided port, on all network interfaces.
