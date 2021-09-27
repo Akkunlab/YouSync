@@ -1,4 +1,4 @@
-import { user, player } from "./config";
+import { config, user, player } from "./config";
 import { socketEvents } from "./socket";
 import { controlYT } from "./yt";
 
@@ -17,7 +17,7 @@ const events = {
   },
 
   initTimeSync() { // 時刻同期
-    const interval = 1000;
+    const interval = config.timeSyncInterval;
 
     setTimeout(function run() {
       const data = { t1: Date.now() };

@@ -1,5 +1,6 @@
 const config = {
-  host: process.env.HOST // ホスト名
+  host: process.env.HOST, // ホスト名
+  timeSyncInterval: 1800000 // 30分
 };
 const user = {
   device: null,
