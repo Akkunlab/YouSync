@@ -18,7 +18,6 @@ const socketEvents = {
 
 // プレイヤーボタンクリック
 socket.on("playerButton", data => {
-  data.ReceiverOnewayTime = user.onewayTime; // 片道時間
   controlYT.onReceiveButtonEvents(data);
   // console.log(`[socket: playerButton] get ${JSON.stringify(data, null, 2)}`); // ログ出力
 });
@@ -29,7 +28,6 @@ socket.on("timeSync", data => {
 
   user.delayTime = ((data.t2 - data.t1) - (data.t4 - data.t3)) / 2; // 遅延時間
   user.roundtripTime = (data.t2 - data.t1) + (data.t4 - data.t3);   // 往復時間
-  user.onewayTime = user.roundtripTime / 2                          // 片道時間
 });
 
 export { socketEvents };

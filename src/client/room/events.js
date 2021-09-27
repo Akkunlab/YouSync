@@ -30,7 +30,7 @@ const events = {
     const data = {
       type: event.currentTarget.id,         // ボタンの種類
       currentTime: player.getCurrentTime(), // 現在時間
-      senderOnewayTime: user.onewayTime     // 片道時間
+      timestamp: { t1: Date.now() }         // 現在時刻
     };
 
     if (data.type === 'play_pause') data.type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断

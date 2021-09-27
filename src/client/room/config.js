@@ -5,8 +5,7 @@ const config = {
 const user = {
   device: null,
   delayTime: 0,
-  roundtripTime: 0,
-  onewayTime: 0
+  roundtripTime: 0
 };
 let player;
 

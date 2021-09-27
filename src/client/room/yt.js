@@ -88,9 +88,11 @@ const controlYT = {
   },
 
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
-    const seekTime = data.currentTime + data.senderOnewayTime * 1e-3 + data.ReceiverOnewayTime * 1e-3;
+    data.timestamp.t2 = Date.now(); // 現在時刻
 
-    console.log(data.senderOnewayTime * 1e-3 + data.ReceiverOnewayTime * 1e-3);
+    const seekTime = data.currentTime + (data.timestamp.t2 - data.timestamp.t1) * 1e-3;
+
+    console.log((data.timestamp.t2 - data.timestamp.t1) * 1e-3);
 
     switch (data.type) {
       case 'play': player.playVideo(); break;    // 再生
