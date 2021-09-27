@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "start_dev": "npm run build && node ./bin/www",
-    "build": "webpack",
+    "build": "webpack --watch",
     "sass": "node-sass src/assets/sass/ --output src/assets/css/ --output-style compressed --watch --source-map true"
   },
   "author": "",
