@@ -1,5 +1,6 @@
 require('dotenv').config();
 const JavaScriptObfuscator = require('webpack-obfuscator');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     
@@ -30,7 +31,8 @@ module.exports = {
 
   target: ["web", "es5"],
   
-  /*plugins: [
-    new JavaScriptObfuscator({rotateUnicodeArray: true}, [])
-  ]*/
+  plugins: [
+    new Dotenv(),
+    // new JavaScriptObfuscator({rotateUnicodeArray: true}, [])
+  ]
 };
