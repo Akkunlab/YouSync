@@ -1,4 +1,5 @@
 import { player } from './config';
+import { events } from "./events";
 
 /* 基本設定 */
 let timeUpdater; // 時間カウント用タイマー
@@ -88,7 +89,7 @@ const controlYT = {
   },
 
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
-    data.timestamp.t2 = Date.now(); // 現在時刻
+    data.timestamp.t2 = events.getCorrectionTime(Date.now()); // 現在時刻
 
     const seekTime = data.currentTime + (data.timestamp.t2 - data.timestamp.t1) * 1e-3;
 
