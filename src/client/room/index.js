@@ -9,7 +9,7 @@ const init = (() => {
   events.checkDevice(); // デバイス確認
   initYT(); // YouTube Player初期化
 
-  // // イベント
+  // 全体イベント
   document.getElementById('previous').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('play_pause').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('next').addEventListener('click', events.onClickPlayerButton);

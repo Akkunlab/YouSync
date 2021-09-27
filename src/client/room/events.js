@@ -16,11 +16,14 @@ const events = {
   },
 
   onClickPlayerButton(event) { // プレイヤーの操作
-    let type = event.currentTarget.id;
+    const data = {
+      type: event.currentTarget.id, // ボタンの種類
+      currentTime: player.getCurrentTime() // 現在時間
+    };
 
-    if (type === 'play_pause') type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断
+    if (data.type === 'play_pause') data.type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断
     
-    socketEvents.send('playerButton', type); // 送信
+    socketEvents.send('playerButton', data); // 送信
   }
 
 };

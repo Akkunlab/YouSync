@@ -47,19 +47,20 @@ const controlYT = {
   },
 
   onReady(event) { // プレイヤー準備時
+    document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title;  // タイトル表示
     controlYT.setVolume(event.target.getVolume()); // 初期音量設定
     event.target.mute(); // ミュート
     event.target.playVideo(); // 動画再生
-    document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title;  // タイトル表示
+    timeUpdater = setInterval(() => controlYT.onTimeUpdate(event), 1000); // 1秒ごとに更新
+  },
 
-    timeUpdater = setInterval(() => {
-      const currentTime = event.target.getCurrentTime(); // 現在時間
-      const duration = room.playlist[room.playlist_number].duration; // 全体時間
+  onTimeUpdate(event) { // 時間更新時
+    const currentTime = event.target.getCurrentTime(); // 現在時間
+    const duration = room.playlist[room.playlist_number].duration; // 全体時間
 
-      document.getElementById('seekbar').value = (currentTime / duration) * 1e3; // シークバー動作
-      document.getElementById('now').textContent =  controlYT.getTime(currentTime);         
-      document.getElementById('total').textContent = ` / ${controlYT.getTime(duration)}`;
-    }, 1000);
+    document.getElementById('seekbar').value = (currentTime / duration) * 1e3; // シークバー動作
+    document.getElementById('now').textContent =  controlYT.getTime(currentTime);         
+    document.getElementById('total').textContent = ` / ${controlYT.getTime(duration)}`;
   },
 
   onStateChange(event) { // プレイヤー変更時
@@ -79,13 +80,13 @@ const controlYT = {
     }
   },
 
-  onReceiveButtonEvents(type) { // プレイヤーのボタン操作イベント受信時
-    switch (type) {
+  onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
+    switch (data.type) {
       case 'play': player.playVideo(); break;    // 再生
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
 
-    console.log(type);
+    player.seekTo(data.currentTime); // 再生位置を移動
   },
 
   setVolume(value) { // プレイヤーの音量設定
