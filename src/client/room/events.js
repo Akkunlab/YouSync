@@ -23,7 +23,7 @@ const events = {
       const data = { t1: Date.now() };
       socketEvents.send('timeSync', data); // 送信
       setTimeout(run, interval);
-    }, interval);
+    }, 100);
   },
 
   onClickPlayerButton(event) { // プレイヤーの操作
