@@ -7,6 +7,7 @@ const init = (() => {
   console.log(room); // 部屋情報
   objects.createPlayList(); // プレイリスト作成
   events.checkDevice(); // デバイス確認
+  events.initTimeSync(); // 時刻同期
   initYT(); // YouTube Player初期化
 
   // 全体イベント

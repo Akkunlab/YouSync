@@ -1,5 +1,6 @@
 import { user, player } from "./config";
 import { socketEvents } from "./socket";
+import { controlYT } from "./yt";
 
 /* イベント */
 const events = {
@@ -15,14 +16,26 @@ const events = {
     }
   },
 
+  initTimeSync() { // 時刻同期
+    const interval = 1000;
+
+    setTimeout(function run() {
+      const data = { t1: Date.now() };
+      socketEvents.send('timeSync', data); // 送信
+      setTimeout(run, interval);
+    }, interval);
+  },
+
   onClickPlayerButton(event) { // プレイヤーの操作
     const data = {
-      type: event.currentTarget.id, // ボタンの種類
-      currentTime: player.getCurrentTime() // 現在時間
+      type: event.currentTarget.id,         // ボタンの種類
+      currentTime: player.getCurrentTime(), // 現在時間
+      senderOnewayTime: user.onewayTime     // 片道時間
     };
 
     if (data.type === 'play_pause') data.type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断
-    
+
+    controlYT.onClickButtonEvents(data); // 自分のPlayerを操作
     socketEvents.send('playerButton', data); // 送信
   }
 

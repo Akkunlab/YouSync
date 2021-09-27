@@ -80,13 +80,24 @@ const controlYT = {
     }
   },
 
+  onClickButtonEvents(data) { // プレイヤーのボタン操作時
+    switch (data.type) {
+      case 'play': player.playVideo(); break;    // 再生
+      case 'pause': player.pauseVideo(); break;  // 一時停止
+    }
+  },
+
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
+    const seekTime = data.currentTime + data.senderOnewayTime * 1e-3 + data.ReceiverOnewayTime * 1e-3;
+
+    console.log(data.senderOnewayTime * 1e-3 + data.ReceiverOnewayTime * 1e-3);
+
     switch (data.type) {
       case 'play': player.playVideo(); break;    // 再生
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
 
-    player.seekTo(data.currentTime); // 再生位置を移動
+    player.seekTo(seekTime); // 再生位置を移動
   },
 
   setVolume(value) { // プレイヤーの音量設定

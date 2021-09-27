@@ -7,7 +7,16 @@ io.on('connection', socket => {
 
   // プレイヤーボタンクリック
   socket.on("playerButton", data => {
-    io.emit("playerButton", data);
+    socket.broadcast.emit('playerButton', data); 
+    console.log(`[socket: playerButton] get ${data}`); // ログ出力
+  });
+
+  // 時刻同期
+  socket.on("timeSync", data => {
+    data.t2 = Date.now();
+    data.t3 = Date.now();
+    
+    io.to(socket.id).emit('timeSync', data);
     console.log(`[socket: playerButton] get ${data}`); // ログ出力
   });
 });
