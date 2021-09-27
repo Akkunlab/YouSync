@@ -1,5 +1,5 @@
 const config = {
-  host: 'http://localhost:3000' // ホスト名
+  host: process.env.HOST // ホスト名
 };
 const user = {
   device: null,
