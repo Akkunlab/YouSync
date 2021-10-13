@@ -107,6 +107,10 @@ svg {
         background: transparent;
         border: none;
       }
+      .search_label > svg {
+        width: 24px;
+        height: 24px;
+      }
       .search_toggle {
         display: none;
       }
