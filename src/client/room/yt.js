@@ -1,8 +1,9 @@
-import { player } from './config';
+import { player, user } from './config';
 import { events } from "./events";
 
 /* 基本設定 */
 let timeUpdater; // 時間カウント用タイマー
+let deviceDelayTime = { time: 0, start: false }; // 端末遅延時間計測
 
 /* 初期化 */
 const initYT = () => {
@@ -73,8 +74,18 @@ const controlYT = {
         stateIns = '終了';
         clearInterval(timeUpdater);
         break;
-      case  1: stateIns = '再生中'; break;
-      case  2: stateIns = '停止'; break;
+      case 1:
+        stateIns = '再生中';
+
+        if (deviceDelayTime.start) {
+          user.setDeviceDelayTime = performance.now() - deviceDelayTime.time;
+          deviceDelayTime.start = false;
+        }
+
+        break;
+      case 2:
+        stateIns = '停止';
+        break;
       case  3: stateIns = 'バッファリング中'; break;
       case  5: stateIns = '頭出し済み'; break;
       default: break;
@@ -86,21 +97,24 @@ const controlYT = {
       case 'play': player.playVideo(); break;    // 再生
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
+
+    events.timeSync() // 時刻同期
   },
 
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
     data.timestamp.t2 = events.getCorrectionTime(Date.now()); // 現在時刻
 
-    const seekTime = data.currentTime + (data.timestamp.t2 - data.timestamp.t1) * 1e-3;
-
-    console.log((data.timestamp.t2 - data.timestamp.t1) * 1e-3);
+    const seekTime = data.currentTime + (data.timestamp.t2 - data.timestamp.t1 + user.getDeviceDelayTime) * 1e-3;
+    player.seekTo(seekTime); // 再生位置を移動
 
     switch (data.type) {
-      case 'play': player.playVideo(); break;    // 再生
+      case 'play': // 再生
+        player.playVideo();
+        deviceDelayTime.time = performance.now();
+        deviceDelayTime.start = true;
+        break;
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
-
-    player.seekTo(seekTime); // 再生位置を移動
   },
 
   setVolume(value) { // プレイヤーの音量設定

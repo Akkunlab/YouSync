@@ -26,8 +26,8 @@ socket.on("playerButton", data => {
 socket.on("timeSync", data => {
   data.t4 = Date.now();
 
-  user.delayTime = ((data.t2 - data.t1) - (data.t4 - data.t3)) / 2; // 遅延時間
-  user.roundtripTime = (data.t2 - data.t1) + (data.t4 - data.t3);   // 往復時間
+  user.setDelayTime = ((data.t2 - data.t1) - (data.t4 - data.t3)) / 2; // 遅延時間
+  user.setRoundtripTime = (data.t2 - data.t1) + (data.t4 - data.t3);   // 往復時間
 });
 
 export { socketEvents };

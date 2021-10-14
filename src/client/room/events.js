@@ -9,20 +9,24 @@ const events = {
     if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android|Mobile)/i)) { // モバイル
       document.getElementsByClassName('volume')[0].style.display = 'none';      // ボリュームバー非表示
       document.getElementsByClassName('video_time')[0].style.display = 'none';  // 動画時間非表示
-      user.device = 'mobile';
+      user.setDevice = 'mobile';
     } else { // PC
-      user.device = 'pc';
+      user.setDevice = 'pc';
     }
   },
 
-  initTimeSync() { // 時刻同期
+  initTimeSync() { // 時刻同期初期化
     const interval = config.timeSyncInterval;
 
     setTimeout(function run() {
-      const data = { t1: Date.now() };
-      socketEvents.send('timeSync', data); // 送信
+      events.timeSync()
       setTimeout(run, interval);
     }, 100);
+  },
+
+  timeSync() { // 時刻同期
+    const data = { t1: Date.now() };
+    socketEvents.send('timeSync', data); // 送信
   },
 
   onClickPlayerButton(event) { // プレイヤーの操作
@@ -39,7 +43,7 @@ const events = {
   },
 
   getCorrectionTime(time) { // 補正した時間を取得
-    return time + user.delayTime;
+    return time + user.getDelayTime;
   }
 
 };
