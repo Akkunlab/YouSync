@@ -71,6 +71,9 @@ svg {
   border-bottom: solid 1px $border-color;
   display: block;
   transition: $transition-duration cubic-bezier(0.0,0.0,0.2,1);
+  will-change: transform, animation;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   z-index: 100;
 
   &.animation {
@@ -203,6 +206,9 @@ svg {
   position: fixed;
   border-top: solid 1px $border-color;
   transition: $transition-duration cubic-bezier(0.0,0.0,0.2,1);
+  will-change: transform, animation;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   z-index: 98;
 
   &.animation {
