@@ -25,8 +25,15 @@
 
   /* バナー */
   .banner_content {
-    .banner_image {
+    .banner_link {
       width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      display: block;
+
+      .banner_image {
+        width: 100%;
+      }
     }
   }
 
@@ -96,8 +103,8 @@
 
           .main_content_section_content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
   
             .roomCard {
 
