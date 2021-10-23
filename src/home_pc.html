@@ -26,22 +26,17 @@
 
         <!-- ▼ 検索 ▼ -->
         <div class="search">
-          <label class="search_label" for="search_toggle">
-            <svg viewBox="0 0 24 24"><use xlink:href="./assets/img/graphics.svg#search"></use></svg>
-          </label>
-          <input id="search_toggle" class="search_toggle" type="checkbox">
           <form class="search_form" autocomplete="off" action="#" @submit="search">
-            <label class="search_label" for="search_toggle">
-              <svg viewBox="0 0 512 512"><use xlink:href="./assets/img/graphics.svg#left"></use></svg>
-            </label>
             <input id="search_input" class="search_input" type="search" size="50" placeholder="URLを入力">
+            <label class="search_label" for="search_toggle">
+              <svg viewBox="0 0 24 24"><use xlink:href="./assets/img/graphics.svg#search"></use></svg>
+            </label>
           </form>
-          <label class="blocker" for="search_toggle"></label>
         </div>
 
         <!-- ▼ ユーザ ▼ -->
         <div class="user">
-          <label class="search_label" for="search_toggle">
+          <label class="user_label">
             <svg viewBox="0 0 24 24"><use xlink:href="./assets/img/graphics.svg#user"></use></svg>
           </label>
         </div>

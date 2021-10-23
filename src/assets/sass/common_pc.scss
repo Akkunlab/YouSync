@@ -8,11 +8,12 @@ $tab-height: 50px;
 $footer-height: 100px;
 $main-min-width: 320px;
 $genre-height: 50px;
-$svg-size: 24px;
+$svg-size: 32px;
 $border-bottom-weight: 2px;
 $margin-side: 12px;
 $list-border-radius: 50px;
 $image-border-radius: 4px;
+$item-border-radius: 4px;
 $transition-duration: .5s;
 $transition-in: transform 225ms cubic-bezier(0,0,.2,1),-webkit-transform 225ms cubic-bezier(0,0,.2,1);
 $transition-out: transform 195ms cubic-bezier(.4,0,1,1), -webkit-transform 195ms cubic-bezier(.4,0,1,1);
@@ -107,69 +108,48 @@ svg {
     /* 検索 */
     .search {
   
-      .search_label, .search_button {
-        padding: (($header-height - $svg-size) / 2);
-        display: inline-block;
-        background: transparent;
-        border: none;
-      }
-      .search_label > svg {
-        width: 24px;
-        height: 24px;
-      }
-      .search_toggle {
-        display: none;
-      }
-      .search_toggle:checked + .search_form {
-        display: flex;
-      }
-      .search_toggle:checked ~ .blocker {
-        display: unset;
-      }
       .search_form {
-        top: 0;
-        left: 0;
         width: 100%;
-        height: $header-height;
-        position: absolute;
-        justify-content: center;
-        align-items: center;
-        display: none;
+        display: flex;
         background: $background-color;
-        z-index: 100;
   
         .search_input {
-          width: 100%;
+          margin: 5px 0;
           font-size: 1.1em;
-          margin: 0 .4em;
           padding: .3em .5em;
-          border-bottom: solid $border-color $border-bottom-weight;
+          border: solid $border-color $border-bottom-weight;
           color: $text-primary-color;
           background: transparent;
           -webkit-appearance: none;
-          border-radius: 0;
+          border-radius: $item-border-radius 0 0 $item-border-radius;
   
           &::placeholder {
             color: $text-secondary-color;
           }
           &:focus {
-            border-bottom: solid $border-active-color $border-bottom-weight;
+            border: solid $border-active-color $border-bottom-weight;
           }
         }
+
+        .search_label {
+          margin: (($header-height - $svg-size - 8px) / 2) 0;
+          padding: 4px 16px;
+          display: inline-block;
+          background: $item-color;
+          border: none;
+          border-radius: 0 $item-border-radius $item-border-radius 0;
+        }
       }
-  
-      /* ブロッカー */
-      .blocker {
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        width: 100vw;
-        height: calc(100vh + #{$header-height});
-        position: fixed;
-        background: $blocker-background-color;
-        display: none;
-        z-index: 99;
+    }
+
+    /* ユーザ */
+    .user {
+
+      .user_label {
+        padding: (($header-height - $svg-size) / 2);
+        display: inline-block;
+        background: transparent;
+        border: none;
       }
     }
   }
