@@ -19,7 +19,7 @@
 
   /* コンテンツタイトル */
   .content_title {
-    width: calc(100% - 24px);
+    width: calc(100% - (#{$margin-side} * 2));
     padding: 0 $margin-side;
   }
 
@@ -39,7 +39,7 @@
 
   /* ジャンル */
   .genre_content {
-
+  
     .genre_content_inner {
       padding: 1em 0;
 
@@ -49,11 +49,11 @@
         .genre_list_content_inner {
           height: $genre-height;
           overflow: hidden;
-          
+
           .genre_list {
             padding-bottom: $margin-side;
             display: flex;
-            overflow-x: auto;
+            overflow-x: scroll;
     
             .genre_list_item {
               margin: 0 .3em;
