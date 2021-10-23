@@ -27,6 +27,27 @@ $text-primary-color: #fff;
 $text-secondary-color: #aaa;
 $blocker-background-color: rgba(0, 0, 0, 0.6);
 
+/* レスポンシブ */
+$pc-width: 1024px;    // PC横幅
+$tablet-width: 680px; // タブレット横幅
+$mobile-width: 480px; // スマホ横幅
+
+@mixin pc {
+  @media (max-width: ($pc-width)) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: ($tablet-width)) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: ($mobile-width)) {
+    @content;
+  }
+}
+
 html {
   font-size: 62.5%;
   font-family: 'Roboto', 'Arial', sans-serif;
