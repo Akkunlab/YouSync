@@ -10,7 +10,7 @@ $main-min-width: 320px;
 $genre-height: 50px;
 $svg-size: 32px;
 $border-bottom-weight: 2px;
-$margin-side: 12px;
+$margin-side: 30px;
 $list-border-radius: 50px;
 $image-border-radius: 4px;
 $item-border-radius: 4px;
@@ -85,7 +85,7 @@ svg {
   }
   .header_wrap {
     height: $header-height;
-    padding: 0 1em;
+    padding: 0 $margin-side;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -107,13 +107,17 @@ svg {
   
     /* 検索 */
     .search {
-  
+      width: 100%;
+      max-width: 700px;
+      margin: 0 3em;
+
       .search_form {
         width: 100%;
         display: flex;
         background: $background-color;
   
         .search_input {
+          width: 100%;
           margin: 5px 0;
           font-size: 1.1em;
           padding: .3em .5em;
@@ -144,85 +148,11 @@ svg {
 
     /* ユーザ */
     .user {
-
       .user_label {
         padding: (($header-height - $svg-size) / 2);
         display: inline-block;
         background: transparent;
         border: none;
-      }
-    }
-  }
-}
-
-/*------------------------------------
-  Footer
-------------------------------------*/
-.footer_wrap {
-  height: $footer-height;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  background: $section-color;
-
-  .footer_content {
-
-    .footer_content_inner {
-
-      .copyright {
-        width: 100px;
-        height: 20px;
-        margin: auto;
-        padding: (($footer-height - 20px) / 2) 0;
-        font-size: .8em;
-      }
-    }
-  }
-}
-
-/*------------------------------------
-  Tab
-------------------------------------*/
-.tab {
-  bottom: 0;
-  width: 100%;
-  position: fixed;
-  border-top: solid 1px $border-color;
-  transition: $transition-in;
-  will-change: transform, animation;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  z-index: 98;
-
-  &.animation {
-    transform: translateY(100%);
-    transition: $transition-out;
-  }
-  .tab_wrap {
-    height: $tab-height;
-    background: $background-color;
-    display: flex;
-
-    input[name="tab_item"] {
-      display: none;
-      
-      // &:checked + .tab_item {
-      //   color: red;
-      // }
-    }
-    .tab_item {
-      width: calc(100% / 4); // タブ数
-      text-align: center;
-      display: block;
-      transition: all 0.2s ease;
-
-      // &:hover {
-      //   opacity: 0.5;
-      // }
-      .tab_item_title {
-        margin: 0;
-        line-height: $tab-height;
-        font-size: 1.1rem;
       }
     }
   }
