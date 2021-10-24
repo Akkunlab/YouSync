@@ -1,7 +1,7 @@
 import { events } from "./events";
 import { objects } from "./objects";
 import { initYT, controlYT } from "./yt";
-import "../room/css/style.css";
+import "../room/sass/style.scss"; // スタイルシートの読込
 
 /* 初期化 */
 const init = (() => {
