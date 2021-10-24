@@ -1,6 +1,6 @@
-import { config, user, player } from "./config";
+import { config, user } from "./config";
 import { socketEvents } from "./socket";
-import { controlYT } from "./yt";
+import { controlYT, player } from "./yt";
 
 /* イベント */
 const events = {

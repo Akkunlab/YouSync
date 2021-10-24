@@ -1,7 +1,8 @@
-import { player, user } from './config';
+import { user } from './config';
 import { events } from "./events";
 
 /* 基本設定 */
+let player;
 let timeUpdater; // 時間カウント用タイマー
 let deviceDelayTime = { time: 0, start: false }; // 端末遅延時間計測
 
@@ -157,4 +158,4 @@ window.onresize = () => {
   );
 }
 
-export { initYT, controlYT };
+export { initYT, controlYT, player };
