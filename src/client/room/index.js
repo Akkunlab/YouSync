@@ -1,6 +1,7 @@
 import { events } from "./events";
 import { objects } from "./objects";
 import { initYT, controlYT } from "./yt";
+import "../room/css/style.css";
 
 /* 初期化 */
 const init = (() => {

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const JavaScriptObfuscator = require('webpack-obfuscator');
 const Dotenv = require('dotenv-webpack');
+const enabledSourceMap = process.env.MODE === "development";
 
 module.exports = {
     
@@ -16,17 +17,33 @@ module.exports = {
   mode: process.env.MODE,
 
   module: {
-    rules: [{
-      test: /\.js$/,
-      use: [{
-        loader: "babel-loader",
-        options: {
-          presets: [
-            "@babel/preset-env",
-          ],
-        },
-      }],
-    }]
+    rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: [
+                "@babel/preset-env",
+              ],
+            },
+          }
+        ],
+      }, {
+        test: /\.css/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
+              sourceMap: enabledSourceMap
+            }
+          }
+        ]
+      }
+    ]
   },
 
   target: ["web", "es5"],
