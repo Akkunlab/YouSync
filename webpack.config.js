@@ -1,5 +1,4 @@
 require('dotenv').config();
-const JavaScriptObfuscator = require('webpack-obfuscator');
 const Dotenv = require('dotenv-webpack');
 const enabledSourceMap = process.env.MODE === "development";
 
@@ -18,6 +17,8 @@ module.exports = {
 
   module: {
     rules: [
+
+      /* JS */
       {
         test: /\.js$/,
         use: [
@@ -30,7 +31,10 @@ module.exports = {
             },
           }
         ],
-      }, {
+      },
+
+      /* CSS */
+      {
         test: /\.css/,
         use: [
           "style-loader",
@@ -42,42 +46,36 @@ module.exports = {
             }
           }
         ]
-      }, {
-        test: /\.scss/, // 対象となるファイルの拡張子
+      },
+
+      /* Sass */
+      {
+        test: /\.scss/,
         use: [
-          // linkタグに出力する機能
           "style-loader",
-          // CSSをバンドルするための機能
           {
             loader: "css-loader",
             options: {
-              // オプションでCSS内のurl()メソッドの取り込みを禁止する
               url: false,
-              // ソースマップの利用有無
               sourceMap: enabledSourceMap,
-
-              // 0 => no loaders (default);
-              // 1 => postcss-loader;
-              // 2 => postcss-loader, sass-loader
               importLoaders: 2
             }
           },
           {
             loader: "sass-loader",
             options: {
-              // ソースマップの利用有無
               sourceMap: enabledSourceMap
             },
           },
         ],
       }
+
     ]
   },
 
   target: ["web", "es5"],
   
   plugins: [
-    new Dotenv(),
-    // new JavaScriptObfuscator({rotateUnicodeArray: true}, [])
+    new Dotenv()
   ]
 };
