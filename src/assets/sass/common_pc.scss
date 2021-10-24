@@ -3,7 +3,7 @@
 ------------------------------------*/
 
 /* グローバル変数 */
-$header-height: 50px;
+$header-height: 56px;
 $tab-height: 50px;
 $footer-height: 100px;
 $main-min-width: 320px;
@@ -28,7 +28,7 @@ $text-secondary-color: #aaa;
 $blocker-background-color: rgba(0, 0, 0, 0.6);
 
 /* レスポンシブ */
-$pc-width: 1024px;    // PC横幅
+$pc-width: 1280px;    // PC横幅
 $tablet-width: 680px; // タブレット横幅
 $mobile-width: 480px; // スマホ横幅
 
@@ -44,6 +44,11 @@ $mobile-width: 480px; // スマホ横幅
 }
 @mixin mobile {
   @media (max-width: ($mobile-width)) {
+    @content;
+  }
+}
+@mixin bk($max-width) {
+  @media (max-width: ($max-width)) {
     @content;
   }
 }
@@ -94,10 +99,6 @@ svg {
   position: fixed;
   border-bottom: solid 1px $border-color;
   display: block;
-  transition: $transition-in;
-  will-change: transform, animation;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
   z-index: 100;
 
   &.animation {
@@ -111,6 +112,10 @@ svg {
     justify-content: space-between;
     position: relative;
     background: $background-color;
+
+    @include tablet {
+      padding: 0 5px;
+    };
   
     /* ロゴ */
     .logo {
@@ -132,6 +137,10 @@ svg {
       max-width: 700px;
       margin: 0 3em;
 
+      @include tablet {
+        margin: 0 .5em;
+      };
+
       .search_form {
         width: 100%;
         display: flex;
@@ -139,7 +148,7 @@ svg {
   
         .search_input {
           width: 100%;
-          margin: 5px 0;
+          margin: 8px 0;
           font-size: 1.1em;
           padding: .3em .5em;
           border: solid $border-color $border-bottom-weight;
@@ -147,6 +156,7 @@ svg {
           background: transparent;
           -webkit-appearance: none;
           border-radius: $item-border-radius 0 0 $item-border-radius;
+          box-sizing: border-box;
   
           &::placeholder {
             color: $text-secondary-color;
