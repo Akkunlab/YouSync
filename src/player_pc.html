@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC Player Style | YouSync</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Kanit:wght@300&family=Noto+Sans+JP&family=Russo+One&display=swap">
+  <link rel="stylesheet" href="./assets/css/player_pc.css">
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <!-- ▼ Header ▼ -->
+    <header id="header" class="header">
+      <div class="header_wrap">
+
+        <!-- ▼ ロゴ ▼ -->
+        <div class="logo">
+
+          <div class="nav">
+            <label id="nav_button" class="nav_button" for="nav_input">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          </div>
+
+          <a class="logo_link" href="#home"><h1 class="logo_text">YouSync</h1></a>
+
+        </div>
+
+        <!-- ▼ 検索 ▼ -->
+        <div class="search">
+          <form class="search_form" autocomplete="off" action="#" @submit="search">
+            <input id="search_input" class="search_input" type="search" size="50" placeholder="URLを入力">
+            <label class="search_label" for="search_toggle">
+              <svg viewBox="0 0 24 24"><use xlink:href="./assets/img/graphics.svg#search"></use></svg>
+            </label>
+          </form>
+        </div>
+
+        <!-- ▼ ユーザ ▼ -->
+        <div class="user">
+          <label class="user_label">
+            <svg viewBox="0 0 24 24"><use xlink:href="./assets/img/graphics.svg#user"></use></svg>
+          </label>
+        </div>
+
+      </div>
+    </header>
+    
+    <!-- ▼ Contents ▼ -->
+    <div class="contents">
+
+      <!-- ▼ Menu ▼ -->
+      <div id="menu" class="menu">
+        <div class="menu_wrap">
+          <input id="nav_input" class="nav_input" type="checkbox">
+          <label id="nav_blocker" class="nav_blocker" for="nav_input"></label>
+          <div class="nav_content">
+            <ul class="nav_list">
+              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
+              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
+              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
+              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ▼ Main ▼ -->
+      <main class="main">
+        <div class="main_wrap">
+
+          <!-- ▼ Primary content ▼ -->
+          <div class="primary_content">
+            <div class="primary_content_inner">
+
+              <!-- ▼ Player ▼ -->
+              <div class="player">
+                <div class="player_inner">
+                  <div id="player"><img class="yt_player" src="./assets/img/thumbnail.jpg"></div>
+                </div>
+              </div>
+
+              <!-- ▼ Detail ▼ -->
+              <div id="video_detail" class="video_detail">
+                <div class="video_detail_inner">
+                  <div class="video_text">
+                    <h1 class="video_title_text">動画タイトル</h1>
+                    <h2 class="video_channel_text">動画チャンネル</h2>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ▼ Secondary content ▼ -->
+          <div class="secondary_content">
+            <div class="secondary_content_inner">
+
+              <!-- ▼ Playlist ▼ -->
+              <div id="playlist" class="playlist">
+                <div class="playlist_inner">
+      
+                  <div class="playlist_header">
+                    <div class="playlist_label" for="playlist_toggle">
+                      <div class="playlist_icon">
+                        <svg viewBox="0 0 320 320"><use xlink:href="./assets/img/graphics.svg#tab_playlist"></use></svg>
+                      </div>
+                      <div class="playlist_title">
+                        <span class="playlist_title_playlist">プレイリスト</span>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <div id="playlist_content" class="playlist_content">
+                    <ul class="playlist_list">
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                      <li class="playlist_item">
+                        <a class="playlist_video_link" href="#playlist_video_link">
+                          <div class="playlist_video_thumbnail">
+                            <img class="playlist_video_thumbnail_img" src="./assets/img/thumbnail.jpg">
+                          </div>
+                          <div class="playlist_video_title">
+                            <span class="playlist_video_title_text">動画タイトル</span>
+                            <span class="playlist_video_title_channel">動画チャンネル</span>
+                          </div>
+                          <div class="playlist_video_duration">
+                            <span class="playlist_video_duration_text">0:00</span>
+                          </div>
+                        </a>
+                      </li>
+      
+                    </ul>
+                  </div>
+      
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
