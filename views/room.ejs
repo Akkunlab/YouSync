@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %> | YouSync</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+
+        <!-- ▼ Header ▼ -->
+        <header>
+            <div class="header_container">
+                <input type="checkbox" id="search_check">
+                <div class="logo">
+                    <a href="http://localhost:3000"><h1 class="title">YouSync</h1></a>
+                </div>
+                <form name="search" onsubmit="func.search(); return false;">
+                    <label id="search_button" for="search_check" onclick="func.search()">
+                        <svg width="20" hight="20" viewBox="0 0 512 512"><use xlink:href="/img/graphics.svg#search"></use></svg>
+                    </label>
+                    <input type="search" id="search_input" size="50" placeholder="URLを入力" onfocus="this.select()">
+                    <div id="search_blocker" onclick="func.blocker()"></div>
+                </form>
+            </div>
+        </header>
+
+        <!-- ▼ メイン ▼ -->
+        <main>
+            
+            <!-- ▼ YTPlayer ▼ -->
+            <div id="yt_player" class="tab_content">
+                <div id="player"></div>
+                <div id="video_title"></div>
+                <div class="player_bar">
+                    <div id="ctrl">
+                        <input id="seekbar" class="seekbar" type="range" value="0" max="1000">
+                        <div class="YT_button_list">
+                            <button id="previous" class="previous">
+                                <svg viewBox="0 0 448 512"><use xlink:href="/img/graphics.svg#previous"></use></svg>
+                            </button>
+                            <button id="play_pause" class="play_pause">
+                                <svg viewBox="0 0 448 512"><use class="play_pause_svg" xlink:href="/img/graphics.svg#pause"></use></svg>
+                            </button>
+                            <button id="next" class="next">
+                                <svg viewBox="0 0 448 512"><use xlink:href="/img/graphics.svg#next"></use></svg>
+                            </button>
+                            <button id="mute" class="mute">
+                                <svg class="mute_svg" viewBox="0 0 576 512"><use xlink:href="/img/graphics.svg#volume_up"></use></svg>
+                            </button>
+                            <input id="volume" class="volume" type="range" value="0" step="5">
+                            <div class="video_time"><span id="now"></span><span id="total"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="side">
+
+                <!-- ▼ Chat ▼ -->
+                <div id="chat" class="tab_content">
+                    <div class="chat_header">
+                        <h2 class="chat_title">チャット</h2>
+                    </div>
+                    <div class="chat_main">
+                        <div id="chat_logs"></div>
+                    </div>
+                    <div class="chat_input">
+                        <form name="chat_send" autocomplete="off" onsubmit="chat_send_msg(); return false;">
+                            <input type="text" id="chat_msg" maxlength="50" placeholder="メッセージを入力">
+                            <button type="submit" id="chat_send_button">
+                                <svg class="svg_send" viewBox="0 0 512 512">
+                                    <use xlink:href="/img/graphics.svg#send"></use>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- ▼ playlist ▼ -->
+                <div id="playlist" class="tab_content">
+                    <div class="playlist_header">
+                        <h2 class="playlist_title">プレイリスト</h2>
+                    </div>
+                    <div class="playlist_main">
+                        <ul class="playlist_list"></ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>                            
+        
+        <!-- ▼ Tab ▼ -->
+        <div id="tab">
+            <input id="tab_item_home" type="radio" name="tab_item">
+            <label for="tab_item_home">
+                <svg width="24" hight="24" viewBox="0 0 460 460"><use xlink:href="/img/graphics.svg#tab_home"></use></svg>
+                <p>ホーム</p>
+            </label>
+            <input id="tab_item_yt_player" type="radio" name="tab_item" onclick="func.change_tab(this.id)" checked>
+            <label for="tab_item_yt_player">
+                <svg width="24" hight="24" viewBox="0 0 512 512"><use xlink:href="/img/graphics.svg#tab_player"></use></svg>
+                <p>再生</p>
+            </label>
+            <input id="tab_item_chat" type="radio" name="tab_item" onclick="func.change_tab(this.id)">
+            <label for="tab_item_chat">
+                <svg width="24" hight="24" viewBox="0 0 512 512"><use xlink:href="/img/graphics.svg#tab_chat"></use></svg>
+                <p>チャット</p>
+            </label>
+            <input id="tab_item_playlist" type="radio" name="tab_item" onclick="func.change_tab(this.id)">
+            <label for="tab_item_playlist">
+                <svg width="24" hight="24" viewBox="0 0 320 320"><use xlink:href="/img/graphics.svg#tab_playlist"></use></svg>
+                <p>プレイリスト</p>
+            </label>
+        </div>
+
+    </div>
+
+    <!-- ▼ js ▼ -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>const getData = '<%- room %>'; const room = getData ? JSON.parse(getData) : null;</script>
+    <script type="module" src="/js/room.js"></script>
+    
+</body>
+</html>
