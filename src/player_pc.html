@@ -85,6 +85,38 @@
               <div class="player">
                 <div class="player_inner">
                   <div id="player"><img class="yt_player" src="./assets/img/thumbnail.jpg"></div>
+
+                  <!-- ▼ Controller ▼ -->
+                  <div class="controller">
+                    <div class="controller_inner">
+                      <button class="controller_button">
+                        <svg viewBox="0 0 448 512">
+                            <use xlink:href="./assets/img/graphics.svg#previous"></use>
+                        </svg>
+                      </button>
+                      <button class="controller_button">
+                        <svg viewBox="0 0 448 512">
+                            <use xlink:href="./assets/img/graphics.svg#pause"></use>
+                        </svg>
+                      </button>
+                      <button class="controller_button">
+                        <svg viewBox="0 0 448 512">
+                            <use xlink:href="./assets/img/graphics.svg#next"></use>
+                        </svg>
+                      </button>
+                      <button class="controller_button">
+                        <svg viewBox="0 0 576 512">
+                            <use xlink:href="./assets/img/graphics.svg#volume_up"></use>
+                        </svg>
+                      </button>
+                      <input id="volume" class="controller_volume" type="range" value="0" step="5">
+                      <div class="video_time_display">
+                        <span class="video_time_current">0:00</span>
+                        <span class>/</span>
+                        <span class="video_time_duration">0:00</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

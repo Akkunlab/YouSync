@@ -187,11 +187,56 @@ $nav-transition-duration: .3s;
 
 /* Player */
 .player {
+  $controller-transition-duration: 0.1s;
 
   .player_inner {
+    position: relative;
 
     .yt_player {
       width: 100%;
+    }
+
+    /* Controller */
+    .controller {
+      $controller-height: 50px;
+      $controller-button-size: 20px;
+
+      bottom: 0;
+      width: 100%;
+      height: $controller-height;
+      position: absolute;
+      transition: $controller-transition-duration;
+      box-shadow: 0px -15px 15px -1px #000 inset;
+      opacity: 0;
+
+      &:hover {
+        opacity: 1;
+      }
+      .controller_inner {
+        margin: 0 10px;
+        display: flex;
+  
+        .controller_button {
+          margin: 0;
+          padding: calc((#{$controller-height} - #{$controller-button-size}) / 2);
+          background: transparent;
+
+          svg {
+            width: $controller-button-size;
+            height: $controller-button-size;
+          }
+        }
+        .video_time_display {
+          height: $controller-height;
+          padding: 0 10px;
+
+          .video_time_current,
+          .video_time_duration {
+            font-size: .9em;
+            line-height: $controller-height;
+          }
+        }
+      }
     }
   }
 }
