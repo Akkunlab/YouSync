@@ -16,62 +16,13 @@
   <div class="wrap">
 
     <!-- ▼ Header ▼ -->
-    <header id="header" class="header">
-      <div class="header_wrap">
-
-        <!-- ▼ ロゴ ▼ -->
-        <div class="logo">
-
-          <div class="nav">
-            <label id="nav_button" class="nav_button" for="nav_input">
-              <span></span>
-              <span></span>
-              <span></span>
-            </label>
-          </div>
-
-          <a class="logo_link" href="#home"><h1 class="logo_text">YouSync</h1></a>
-
-        </div>
-
-        <!-- ▼ 検索 ▼ -->
-        <div class="search">
-          <form class="search_form" autocomplete="off" action="#" @submit="search">
-            <input id="search_input" class="search_input" type="search" size="50" placeholder="URLを入力">
-            <label class="search_label" for="search_toggle">
-              <svg viewBox="0 0 24 24"><use xlink:href="/img/graphics.svg#search"></use></svg>
-            </label>
-          </form>
-        </div>
-
-        <!-- ▼ ユーザ ▼ -->
-        <div class="user">
-          <label class="user_label">
-            <svg viewBox="0 0 24 24"><use xlink:href="/img/graphics.svg#user"></use></svg>
-          </label>
-        </div>
-
-      </div>
-    </header>
+    <%- include('components/_header.ejs') %>
     
     <!-- ▼ Contents ▼ -->
     <div class="contents">
 
       <!-- ▼ Menu ▼ -->
-      <div id="menu" class="menu">
-        <div class="menu_wrap">
-          <input id="nav_input" class="nav_input" type="checkbox" checked>
-          <label id="nav_blocker" class="nav_blocker" for="nav_input"></label>
-          <div class="nav_content">
-            <ul class="nav_list">
-              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
-              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
-              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
-              <li class="nav_list_item"><a class="nav_list_item_link" href="#CONTENT">CONTENT</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <%- include('components/_menu.ejs') %>
 
       <!-- ▼ Main ▼ -->
       <main class="main">
@@ -91,31 +42,13 @@
             <div class="genre_list_content">
               <div class="genre_list_content_inner">
                 <ul class="genre_list">
-                  <li class="genre_list_item">
-                    <a class="genre_link" href="#genre_link1">
-                      <h3 class="genre_title">ジャンル</h3>
-                    </a>           
-                  </li>
-                  <li class="genre_list_item">
-                    <a class="genre_link" href="#genre_link2">
-                      <h3 class="genre_title">ジャンル</h3>
-                    </a>           
-                  </li>
-                  <li class="genre_list_item">
-                    <a class="genre_link" href="#genre_link3">
-                      <h3 class="genre_title">ジャンル</h3>
-                    </a>           
-                  </li>
-                  <li class="genre_list_item">
-                    <a class="genre_link" href="#genre_link4">
-                      <h3 class="genre_title">ジャンル</h3>
-                    </a>           
-                  </li>
-                  <li class="genre_list_item">
-                    <a class="genre_link" href="#genre_link5">
-                      <h3 class="genre_title">ジャンル</h3>
-                    </a>           
-                  </li>
+                  <% for (let i = 0; i < 5; i++) { %>
+                    <li class="genre_list_item">
+                      <a class="genre_link" href="#genre_link">
+                        <h3 class="genre_title">ジャンル</h3>
+                      </a>           
+                    </li>
+                  <% } %>
                 </ul>
               </div>
             </div>
@@ -133,146 +66,22 @@
                   <h2 class="section_title">おすすめ</h2>
                 </div>
                 <div class="main_content_section_content">
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link01">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail01">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
+                  <% for (let i = 0; i < 10; i++) { %>
+                    <div class="roomCard">
+                      <div class="roomCard_inner">
+                        <div class="roomCard_thumbnail">
+                          <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link">
+                            <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                          </a>
+                        </div>
+                        <div class="roomCard_detail">
+                          <a class="roomCard_detail_link" href="#roomCard_detail">
+                            <h3 class="roomCard_title">動画タイトル</h3>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail02">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link03">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail03">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link04">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail04">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <% } %>
                 </div>
               </div>
             </div>
@@ -284,76 +93,22 @@
                   <h2 class="section_title">その他</h2>
                 </div>
                 <div class="main_content_section_content">
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link11">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail11">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link12">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail12">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
+                  <% for (let i = 0; i < 5; i++) { %>
+                    <div class="roomCard">
+                      <div class="roomCard_inner">
+                        <div class="roomCard_thumbnail">
+                          <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link">
+                            <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                          </a>
+                        </div>
+                        <div class="roomCard_detail">
+                          <a class="roomCard_detail_link" href="#roomCard_detail">
+                            <h3 class="roomCard_title">動画タイトル</h3>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link13">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail13">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link14">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail14">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="roomCard">
-                    <div class="roomCard_inner">
-                      <div class="roomCard_thumbnail">
-                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link14">
-                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
-                        </a>
-                      </div>
-                      <div class="roomCard_detail">
-                        <a class="roomCard_detail_link" href="#roomCard_detail14">
-                          <h3 class="roomCard_title">動画タイトル</h3>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
+                  <% } %>
                 </div>
               </div>
             </div>
