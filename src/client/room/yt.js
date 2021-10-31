@@ -42,7 +42,7 @@ const controlYT = {
 
   setSize(type) { // プレイヤーサイズ設定
     const aspectRatio = [16, 9]; // アスペクト比
-    const playerRatio = 1.6; // プレイヤー比
+    const playerRatio = 1.685; // プレイヤー比
     const width = window.innerWidth > 1024 ? window.innerWidth / playerRatio : window.innerWidth;
     const height = (width / aspectRatio[0]) * aspectRatio[1];
 
