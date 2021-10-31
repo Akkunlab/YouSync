@@ -1,0 +1,192 @@
+@use "sass:math";
+
+/*------------------------------------
+  Default Style
+------------------------------------*/
+
+/* グローバル変数 */
+$header-height: 56px;
+$tab-height: 50px;
+$footer-height: 100px;
+$main-min-width: 320px;
+$genre-height: 50px;
+$svg-size: 32px;
+$border-bottom-weight: 2px;
+$margin-side: 30px;
+$list-border-radius: 50px;
+$image-border-radius: 4px;
+$item-border-radius: 4px;
+$transition-duration: .5s;
+$transition-in: transform 225ms cubic-bezier(0,0,.2,1),-webkit-transform 225ms cubic-bezier(0,0,.2,1);
+$transition-out: transform 195ms cubic-bezier(.4,0,1,1), -webkit-transform 195ms cubic-bezier(.4,0,1,1);
+
+$background-color: #181818;
+$section-color: #212121;
+$item-color: #383838;
+$border-color: rgba(115, 115, 115, 0.2);
+$border-active-color: #3f51b5;
+$text-primary-color: #fff;
+$text-secondary-color: #aaa;
+$blocker-background-color: rgba(0, 0, 0, 0.6);
+
+/* レスポンシブ */
+$pc-width: 1280px;    // PC横幅
+$tablet-width: 680px; // タブレット横幅
+$mobile-width: 480px; // スマホ横幅
+
+@mixin pc {
+  @media (max-width: ($pc-width)) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: ($tablet-width)) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: ($mobile-width)) {
+    @content;
+  }
+}
+@mixin bk($max-width) {
+  @media (max-width: ($max-width)) {
+    @content;
+  }
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Roboto', 'Arial', sans-serif;
+}
+body {
+  font-size: 1.6em;
+  color: $text-primary-color;
+  background: $background-color;
+}
+a {
+  color: $text-primary-color;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+input, button {
+  border: none;
+  outline: 0;
+}
+button, label {
+  cursor: pointer;
+}
+img {
+  vertical-align: bottom;
+}
+svg {
+  width: $svg-size;
+  height: $svg-size;
+  vertical-align: middle;
+  fill: $text-primary-color;
+  stroke: $text-primary-color;
+}
+  
+/*------------------------------------
+  Header
+------------------------------------*/
+.header {
+  width: 100%;
+  position: fixed;
+  border-bottom: solid 1px $border-color;
+  display: block;
+  z-index: 100;
+
+  &.animation {
+    transform: translateY(-100%);
+    transition: $transition-out;
+  }
+  .header_wrap {
+    height: $header-height;
+    padding: 0 $margin-side;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background: $background-color;
+
+    @include tablet {
+      padding: 0 5px;
+    };
+  
+    /* ロゴ */
+    .logo {
+      height: $header-height;
+  
+      .logo_text {
+        line-height: $header-height;
+        margin: 0;
+        padding: 0 0.5em;
+        font-size: 1.2em;
+        font-family: 'Russo One', sans-serif;
+        text-align: center;
+      }
+    }
+  
+    /* 検索 */
+    .search {
+      width: 100%;
+      max-width: 700px;
+      margin: 0 3em;
+
+      @include tablet {
+        margin: 0 .5em;
+      };
+
+      .search_form {
+        width: 100%;
+        display: flex;
+        background: $background-color;
+  
+        .search_input {
+          width: 100%;
+          margin: 8px 0;
+          font-size: 1.1em;
+          padding: .3em .5em;
+          border: solid $border-color $border-bottom-weight;
+          color: $text-primary-color;
+          background: transparent;
+          -webkit-appearance: none;
+          border-radius: $item-border-radius 0 0 $item-border-radius;
+          box-sizing: border-box;
+  
+          &::placeholder {
+            color: $text-secondary-color;
+          }
+          &:focus {
+            border: solid $border-active-color $border-bottom-weight;
+          }
+        }
+
+        .search_label {
+          margin: math.div($header-height - $svg-size - 8px, 2) 0;
+          padding: 4px 16px;
+          display: inline-block;
+          background: $item-color;
+          border: none;
+          border-radius: 0 $item-border-radius $item-border-radius 0;
+        }
+      }
+    }
+
+    /* ユーザ */
+    .user {
+      .user_label {
+        padding: math.div($header-height - $svg-size, 2);
+        display: inline-block;
+        background: transparent;
+        border: none;
+      }
+    }
+  }
+}
