@@ -6,6 +6,7 @@ const enabledSourceMap = process.env.MODE === "development";
 module.exports = {
     
   entry: {
+    "index": "./src/client/index/index.js",
     "room": "./src/client/room/index.js",
   },
   
@@ -81,7 +82,7 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new MiniCssExtractPlugin({
-      filename: "../css/style.css",
+      filename: "../css/[name].css",
     })
   ]
 };
