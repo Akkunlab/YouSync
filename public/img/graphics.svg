@@ -149,5 +149,25 @@
             <g><polygon points="213.333,181.333 213.333,309.333 320,245.333"/></g>
         </symbol>
 
+        <!-- ▼ 矢印_左 ▼ -->
+        <symbol id="left" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6"/>
+        </symbol>
+
+        <!-- ▼ 矢印_右 ▼ -->
+        <symbol id="right" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+        </symbol>
+
+        <!-- ▼ 矢印_上 ▼ -->
+        <symbol id="up" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </symbol>
+
+        <!-- ▼ 矢印_下 ▼ -->
+        <symbol id="down" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9l6 6 6-6"/>
+        </symbol>
+
     </defs>
 </svg>

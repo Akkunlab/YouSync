@@ -7,6 +7,7 @@ module.exports = {
     
   entry: {
     "index": "./src/client/index/index.js",
+    "index_m": "./src/client/index/index_m.js",
     "room": "./src/client/room/index.js",
   },
   

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mobile Style | YouSync</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Kanit:wght@300&family=Noto+Sans+JP&family=Russo+One&display=swap">
+  <link rel="stylesheet" href="/css/index_m.css">
+</head>
+
+<body>
+
+  <div class="wrap">
+
+    <!-- ▼ Header ▼ -->
+    <header id="header" class="header">
+      <div class="header_wrap">
+
+        <!-- ▼ ロゴ ▼ -->
+        <div class="logo">
+          <a class="logo_link" href="#home"><h1 class="logo_text">YouSync</h1></a>
+        </div>
+
+        <!-- ▼ 検索 ▼ -->
+        <div class="search">
+          <label class="search_label" for="search_toggle">
+            <svg viewBox="0 0 24 24"><use xlink:href="/img/graphics.svg#search"></use></svg>
+          </label>
+          <input id="search_toggle" class="search_toggle" type="checkbox">
+          <form class="search_form" autocomplete="off" action="#" @submit="search">
+            <label class="search_label" for="search_toggle">
+              <svg viewBox="0 0 512 512"><use xlink:href="/img/graphics.svg#left"></use></svg>
+            </label>
+            <input id="search_input" class="search_input" type="search" size="50" placeholder="URLを入力">
+          </form>
+          <label class="blocker" for="search_toggle"></label>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- ▼ Main ▼ -->
+    <main class="main">
+      <div class="main_wrap">
+
+        <!-- ▼ バナー ▼ -->
+        <div class="banner_content">
+          <a class="banner_link" href="#banner_link">
+            <img class="banner_image" src="/img/thumbnail.jpg">
+          </a>
+        </div>
+
+        <!-- ▼ ジャンル ▼ -->
+        <div class="genre_content">
+          <div class="genre_content_inner">
+            <h2 class="content_title">ジャンル</h2>
+            <div class="genre_list_content">
+              <div class="genre_list_content_inner">
+                <ul class="genre_list">
+                  <li class="genre_list_item">
+                    <a class="genre_link" href="#genre_link1">
+                      <h3 class="genre_title">ジャンル</h3>
+                    </a>           
+                  </li>
+                  <li class="genre_list_item">
+                    <a class="genre_link" href="#genre_link2">
+                      <h3 class="genre_title">ジャンル</h3>
+                    </a>           
+                  </li>
+                  <li class="genre_list_item">
+                    <a class="genre_link" href="#genre_link3">
+                      <h3 class="genre_title">ジャンル</h3>
+                    </a>           
+                  </li>
+                  <li class="genre_list_item">
+                    <a class="genre_link" href="#genre_link4">
+                      <h3 class="genre_title">ジャンル</h3>
+                    </a>           
+                  </li>
+                  <li class="genre_list_item">
+                    <a class="genre_link" href="#genre_link5">
+                      <h3 class="genre_title">ジャンル</h3>
+                    </a>           
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ▼ メインコンテンツ ▼ -->
+        <div class="main_content">
+          <div class="main_content_inner">
+
+            <!-- ▼ おすすめ ▼ -->
+            <div class="main_content_section">
+              <div class="main_content_section_inner">
+                <div class="main_content_section_title">
+                  <h2 class="section_title">おすすめ</h2>
+                </div>
+                <div class="main_content_section_content">
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link01">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail01">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link02">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail02">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link03">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail03">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link04">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail04">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ▼ その他 ▼ -->
+            <div class="main_content_section">
+              <div class="main_content_section_inner">
+                <div class="main_content_section_title">
+                  <h2 class="section_title">その他</h2>
+                </div>
+                <div class="main_content_section_content">
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link11">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail11">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link12">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail12">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link13">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail13">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="roomCard">
+                    <div class="roomCard_inner">
+                      <div class="roomCard_thumbnail">
+                        <a class="roomCard_thumbnail_link" href="#roomCard_thumbnail_link14">
+                          <img class="roomCard_thumbnail_image" src="/img/thumbnail.jpg">
+                        </a>
+                      </div>
+                      <div class="roomCard_detail">
+                        <a class="roomCard_detail_link" href="#roomCard_detail14">
+                          <h3 class="roomCard_title">動画タイトル</h3>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- ▼ Tab ▼ -->
+    <div id="tab" class="tab">
+      <div class="tab_wrap">
+
+        <input id="tab_item_1" name="tab_item" type="radio">
+        <label class="tab_item" for="tab_item_1"><p class="tab_item_title">タブ</p></label>
+  
+        <input id="tab_item_2" name="tab_item" type="radio">
+        <label class="tab_item" for="tab_item_2"><p class="tab_item_title">タブ</p></label>
+  
+        <input id="tab_item_3" name="tab_item" type="radio">
+        <label class="tab_item" for="tab_item_3"><p class="tab_item_title">タブ</p></label>
+  
+        <input id="tab_item_4" name="tab_item" type="radio">
+        <label class="tab_item" for="tab_item_4"><p class="tab_item_title">タブ</p></label>
+      
+      </div>  
+    </div>
+
+    <!-- ▼ Footer ▼ -->
+    <!-- <footer class="footer">
+      <div class="footer_wrap">
+        <div class="footer_content">
+          <div class="footer_content_inner">
+            <p class="copyright">&copy; Akkunlab</p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+  
+  </div>
+
+  <!-- ▼ JavaScript ▼ -->
+  <script type="text/javascript" src="/js/index_m.js"></script>
+    
+</body>
+</html>
