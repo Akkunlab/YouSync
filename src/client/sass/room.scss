@@ -241,8 +241,42 @@ $nav-transition-duration: .3s;
     flex-wrap: wrap;
     border-bottom: solid $border-color $border-bottom-weight;
 
-    .seekbar {
+    .video_time_seekbar {
+      $seekbar-height: 3px;
+      $seekbar-hover-height: 5px;
+      $seekbar-border-radius: 5px;
+      $seekbar-true-color: #f00;
+      $seekbar-false-color: #444;
+
       width: 100%;
+    
+      &:hover .video_time_seekbar_input,
+      &.hover .video_time_seekbar_input {
+        height: $seekbar-hover-height;
+      }
+      &:hover .video_time_seekbar_input::-webkit-slider-thumb,
+      &.hover .video_time_seekbar_input::-webkit-slider-thumb {
+        width: $seekbar-hover-height * 2;
+        height: $seekbar-hover-height * 2;
+      }
+      
+      .video_time_seekbar_input {
+        width: 100%;
+        height: $seekbar-height;
+        margin: 0;
+        -webkit-appearance: none;
+        cursor: pointer;
+        vertical-align: bottom;
+        border-radius: $seekbar-border-radius;
+        background: linear-gradient(to right, $seekbar-true-color 0%, $seekbar-true-color 0%, $seekbar-false-color 0%, $seekbar-false-color 100%);
+      
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          border: none;
+          border-radius: $seekbar-border-radius;
+          background: $seekbar-true-color;
+        }
+      }
     }
     .controller_button {
       margin: 0;

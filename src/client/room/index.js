@@ -12,9 +12,13 @@ const init = (() => {
   initYT(); // YouTube Player初期化
 
   // 全体イベント
+  const seekbar = document.getElementById('seekbar');
+
   document.getElementById('previous').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('play_pause').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('next').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('mute').addEventListener('click', controlYT.setMute);
   document.getElementById('volume').addEventListener('click', controlYT.setVolume);
+  seekbar.addEventListener('change', events.onChangeSeekBar, false);
+  seekbar.addEventListener('input', events.onChangeSeekBar, false);
 })();

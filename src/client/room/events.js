@@ -44,6 +44,18 @@ const events = {
 
   getCorrectionTime(time) { // 補正した時間を取得
     return time + user.getDelayTime;
+  },
+
+  onChangeSeekBar(setValue) { // seekbar移動
+    const seekbar = document.getElementById('seekbar');
+
+    if (!isNaN(setValue)) seekbar.value = setValue; // setValueが数値なら値を設定
+
+    const value = seekbar.value / 10;
+    const trueColor = '#f00';
+    const falseColor = '#444';
+
+    seekbar.style.cssText = `background: linear-gradient(to right, ${trueColor} 0%, ${trueColor} ${value}%, ${falseColor} ${value}%, ${falseColor} 100%);`
   }
 
 };

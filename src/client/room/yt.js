@@ -62,7 +62,7 @@ const controlYT = {
     const currentTime = event.target.getCurrentTime(); // 現在時間
     const duration = room.playlist[room.playlist_number].duration; // 全体時間
 
-    document.getElementById('seekbar').value = (currentTime / duration) * 1e3; // シークバー動作
+    events.onChangeSeekBar((currentTime / duration) * 1e3); // シークバー動作
     document.getElementById('video_time_current').textContent = controlYT.getTime(currentTime);         
     document.getElementById('video_time_duration').textContent = controlYT.getTime(duration);
   },
