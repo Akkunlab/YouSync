@@ -6,6 +6,7 @@ var db = require('../src/server/firebase');
 router.get('/:roomName', async function (req, res, next) {
   const roomName = req.params.roomName;
   const roomData = await getRoom(roomName); // Roomを取得
+  const userAgent = req.headers['user-agent']; // UserAgentの取得
   
   // 指定のRoomがない時
   if (!roomData) {
@@ -19,10 +20,18 @@ router.get('/:roomName', async function (req, res, next) {
 
   data.playlist = playlist;
 
-  res.render('room', {
-    title: data.name,
-    room: JSON.stringify(data)
-  });
+  // モバイルの場合
+  if (userAgent.match(/(iPhone|iPad|iPod|Android|Mobile)/i)) {
+    res.render('room_m', {
+      title: data.name,
+      room: JSON.stringify(data)
+    });
+  } else {
+    res.render('room', {
+      title: data.name,
+      room: JSON.stringify(data)
+    });
+  }
 });
 
 /* Roomを取得 */

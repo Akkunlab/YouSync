@@ -50,7 +50,13 @@ const controlYT = {
   },
 
   onReady(event) { // プレイヤー準備時
-    document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title; // 動画タイトル表示
+
+    // 動画タイトル表示
+    const videoTitleElements = document.getElementsByClassName('video_title_text');
+    for (let i = 0; i < videoTitleElements.length; i++) {
+      videoTitleElements[i].textContent = room.playlist[room.playlist_number].title;
+    }
+
     document.getElementById('video_channel').textContent = room.playlist[room.playlist_number].channel; // 動画チャンネル表示
     controlYT.setVolume(event.target.getVolume()); // 初期音量設定
     event.target.mute(); // ミュート

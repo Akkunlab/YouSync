@@ -1,0 +1,342 @@
+@use "sass:math";
+@import "common_m.scss";
+
+/* グローバル変数 */
+$animation-duration: 50s;
+$playlist-min-height: 50px;
+
+/*------------------------------------
+  Bar
+------------------------------------*/
+.wrap {
+  transition-duration: $transition-duration;
+  overflow: hidden;
+}
+
+.bar {
+  $bar-width: 50px;
+  $bar-weight: 5px;
+  $bar-color: #444;
+
+  height: $header-height;
+  transition: $transition-duration;
+  -webkit-transition: $transition-duration;
+  will-change: transform, animation;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: relative;
+  display: block;
+
+  .bar_content {
+    top: 50%;
+    left: 50%;
+    width: $bar-width;
+    border-radius: $bar-weight;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-bottom: solid $bar-weight $bar-color;
+  }
+}
+.bar.is-hidden {
+  height: 0;
+  visibility: hidden;
+}
+
+/* Bar トグル */
+.bar_toggle {
+  display: none;
+}
+
+/*------------------------------------
+  Main
+------------------------------------*/
+.main_wrap {
+  $video-title-line-height: 32px;
+  
+  min-width: $main-min-width;
+  text-align: center;
+
+  /* テキスト */
+  .video_title_text,
+  .video_channel_text {
+    width: 100%;
+    margin: 0;
+    white-space: nowrap;
+  }
+  .video_title_text {
+    left: 0;
+    line-height: $video-title-line-height;
+    font-size: 2em;
+    font-weight: bold;
+    display: inline-block;
+    position: absolute;
+  }
+  .video_title_text:nth-child(2) {
+    animation: textAnimation1 $animation-duration math.div($animation-duration, -2) linear infinite;
+  }
+  .video_title_text:nth-child(3) {
+    animation: textAnimation2 $animation-duration linear infinite;
+  }
+  .video_channel_text {
+    padding-top: 1em;
+    line-height: 24px;
+    font-size: 1em;
+    color: $text-secondary-color;
+  }
+  .playlist_title,
+  .playlist_video_title,
+  .playlist_video_title_text,
+  .playlist_video_title_channel,
+  .playlist_title_video {
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Player */
+  .player {
+
+    .player_inner {
+
+      .yt_player {
+        width: 100%;
+      }
+    }
+  }
+
+  /* Detail */
+  .video_detail {
+
+    .video_detail_inner {
+      padding: 1em $margin-side;
+
+      .video_text {
+        padding: 2rem 0;
+        overflow: hidden;
+
+        .video_title {
+          height: $video-title-line-height;
+          position: relative;
+
+          .video_title_border {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            box-shadow: 
+             20px 0 15px -4px $background-color inset,
+            -20px 0 15px -4px $background-color inset;
+            z-index: 10;
+          }
+        }
+      }
+      .video_time {
+
+        .video_time_seekbar {
+          $seekbar-height: 3px;
+          $seekbar-hover-height: 8px;
+          $seekbar-border-radius: 8px;
+          $seekbar-true-color: #f00;
+          $seekbar-false-color: #444;
+        
+          &:hover .video_time_seekbar_input,
+          &.hover .video_time_seekbar_input {
+            height: $seekbar-hover-height;
+          }
+          &:hover .video_time_seekbar_input::-webkit-slider-thumb,
+          &.hover .video_time_seekbar_input::-webkit-slider-thumb {
+            width: $seekbar-hover-height * 2;
+            height: $seekbar-hover-height * 2;
+          }
+          
+          .video_time_seekbar_input {
+            width: 100%;
+            height: $seekbar-height;
+            margin: 0;
+            -webkit-appearance: none;
+            cursor: pointer;
+            vertical-align: bottom;
+            border-radius: $seekbar-border-radius;
+            background: linear-gradient(to right, $seekbar-true-color 0%, $seekbar-true-color 0%, $seekbar-false-color 0%, $seekbar-false-color 100%);
+          
+            &::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              border: none;
+              border-radius: $seekbar-border-radius;
+              background: $seekbar-true-color;
+            }
+          }
+        }
+        .video_time_display {
+          display: flex;
+          justify-content: space-between;
+
+          .video_time_current,
+          .video_time_duration {
+            line-height: 3em;
+          }
+        }
+      }
+    }
+  }
+
+  /* Controller */
+  .controller {
+
+    .controller_inner {
+      padding: 1em $margin-side;
+      margin-bottom: $header-height;
+
+      .controller_button {
+        margin: 0 1em;
+        padding: 1em;
+        background: transparent;
+
+        .play_pause_svg2 {
+          width: $svg-size * 2;
+          height: $svg-size * 2;
+        }
+      }
+    }
+  }
+
+  /* Playlist */
+
+  /* Playlist トグル */
+  .playlist_toggle {
+    display: none;
+  }
+  .playlist_toggle:checked ~ .playlist .playlist_title_video {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .playlist_toggle:checked ~ .playlist .playlist_title_category {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .playlist_toggle:checked ~ .playlist .playlist_icon:last-child svg {
+    transform: rotate(-180deg);
+  }
+
+  /* Playlist メイン */
+  .playlist {
+    $playlist-item-height: 56px;
+    $playlist-thumbnail-scale: 0.8;
+
+    top: calc(100% - #{$playlist-min-height});
+    width: 100%;
+    height: 100%;
+    transition: $transition-duration;
+    -webkit-transition: $transition-duration;
+    will-change: transform, animation;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: fixed;
+    background: $section-color;
+    z-index: 100;
+
+    .playlist_inner {
+      background: $section-color;
+
+      .playlist_header {
+
+        .playlist_label {
+          display: flex;
+          justify-content: space-between;
+
+          .playlist_icon {
+            padding: math.div($playlist-min-height - $svg-size, 2);
+
+            svg {
+              transition-duration: $transition-duration;
+            }
+          }
+          .playlist_title {
+            width: 100%;
+
+            .playlist_title_playlist,
+            .playlist_title_next,
+            .playlist_title_text {
+              line-height: $playlist-min-height;
+            }
+            .playlist_title_category {
+              height: 0;
+              opacity: 0;
+              transition-duration: $transition-duration;
+              
+              .playlist_title_playlist {
+                font-weight: bold;
+              }
+            }
+            .playlist_title_video {
+              transition-duration: $transition-duration;
+            }
+          }
+        }
+      }
+      .playlist_content {
+        overflow-y: scroll;
+        height: auto;
+
+        .playlist_list {
+
+          .playlist_item {
+            border-top: solid 1px $border-color;
+
+            .playlist_video_link {
+              padding: .5em $margin-side;
+              display: flex;
+
+              .playlist_video_thumbnail {
+                
+                .playlist_video_thumbnail_img {
+                  width: 100px;
+                  height: $playlist-item-height;
+                  object-fit: cover;
+                  transform: scale($playlist-thumbnail-scale, $playlist-thumbnail-scale);
+                }
+              }
+              .playlist_video_title {
+                width: 100%;
+                margin: 0 $margin-side;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+
+                .playlist_video_title_channel {
+                  font-size: .8em;
+                  color: $text-secondary-color;
+                }
+              }
+              .playlist_video_duration {
+
+                .playlist_video_duration_text {
+                  line-height: $playlist-item-height;
+                  font-size: .8em;
+                  color: $text-secondary-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes textAnimation1 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes textAnimation2 {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}

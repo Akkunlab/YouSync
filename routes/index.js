@@ -8,10 +8,8 @@ router.get('/', function (req, res, next) {
   // モバイルの場合
   if (userAgent.match(/(iPhone|iPad|iPod|Android|Mobile)/i)) {
     res.render('index_m');
-    return;
-  } {
+  } else {
     res.render('index');
-    return;
   }
 });
 
