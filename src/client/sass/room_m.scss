@@ -116,7 +116,7 @@ $playlist-min-height: 50px;
         overflow: hidden;
 
         .video_title {
-          height: $video-title-line-height;
+          height: calc($video-title-line-height + 10px);
           position: relative;
 
           .video_title_border {
