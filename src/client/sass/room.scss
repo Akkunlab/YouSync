@@ -188,56 +188,12 @@ $nav-transition-duration: .3s;
 
 /* Player */
 .player {
-  $controller-transition-duration: 0.1s;
 
   .player_inner {
     position: relative;
 
     .yt_player {
       width: 100%;
-    }
-
-    /* Controller */
-    .controller {
-      $controller-height: 50px;
-      $controller-button-size: 20px;
-
-      bottom: 0;
-      width: 100%;
-      height: $controller-height;
-      position: absolute;
-      transition: $controller-transition-duration;
-      box-shadow: 0px -15px 15px -1px #000 inset;
-      opacity: 0;
-
-      &:hover {
-        opacity: 1;
-      }
-      .controller_inner {
-        margin: 0 10px;
-        display: flex;
-  
-        .controller_button {
-          margin: 0;
-          padding: calc((#{$controller-height} - #{$controller-button-size}) / 2);
-          background: transparent;
-
-          svg {
-            width: $controller-button-size;
-            height: $controller-button-size;
-          }
-        }
-        .video_time_display {
-          height: $controller-height;
-          padding: 0 10px;
-
-          .video_time_current,
-          .video_time_duration {
-            font-size: .9em;
-            line-height: $controller-height;
-          }
-        }
-      }
     }
   }
 }
@@ -247,9 +203,7 @@ $nav-transition-duration: .3s;
   $text-height: 32px;
 
   .video_detail_inner {
-    margin-bottom: $margin-side;
     padding: 10px 5px;
-    border-bottom: solid $border-color $border-bottom-weight;
 
     .video_text {
 
@@ -258,6 +212,7 @@ $nav-transition-duration: .3s;
       }
       .video_channel_text {
         font-size: 1em;
+        font-weight: normal;
         color: $text-secondary-color;
       }
       .video_title_text,
@@ -265,6 +220,49 @@ $nav-transition-duration: .3s;
         height: $text-height;
         line-height: $text-height;
         margin: 0;
+      }
+    }
+  }
+}
+
+/* Controller */
+.controller {
+  $controller-height: 50px;
+  $controller-button-size: 24px;
+  $controller-transition-duration: 0.1s;
+
+  width: 100%;
+  transition: $controller-transition-duration;
+
+  .controller_inner {
+    margin-bottom: $margin-side;
+    padding: 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: solid $border-color $border-bottom-weight;
+
+    .seekbar {
+      width: 100%;
+    }
+    .controller_button {
+      margin: 0;
+      padding: calc((#{$controller-height} - #{$controller-button-size}) / 2);
+      background: transparent;
+
+      svg {
+        width: $controller-button-size;
+        height: $controller-button-size;
+      }
+    }
+    .video_time_display {
+      height: $controller-height;
+
+      padding: 0 10px;
+
+      .video_time_current,
+      .video_time_duration {
+        font-size: .9em;
+        line-height: $controller-height;
       }
     }
   }

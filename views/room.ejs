@@ -85,39 +85,6 @@
               <div class="player">
                 <div class="player_inner">
                   <div id="player"></div>
-
-                  <!-- ▼ Controller ▼ -->
-                  <div class="controller">
-                    <div class="controller_inner">
-                      <input id="seekbar" class="seekbar" type="range" value="0" max="1000">
-                      <button id="previous" class="controller_button">
-                        <svg viewBox="0 0 448 512">
-                            <use xlink:href="/img/graphics.svg#previous"></use>
-                        </svg>
-                      </button>
-                      <button id="play_pause" class="controller_button">
-                        <svg viewBox="0 0 448 512">
-                            <use xlink:href="/img/graphics.svg#pause"></use>
-                        </svg>
-                      </button>
-                      <button id="next" class="controller_button">
-                        <svg viewBox="0 0 448 512">
-                            <use xlink:href="/img/graphics.svg#next"></use>
-                        </svg>
-                      </button>
-                      <button id="mute" class="controller_button">
-                        <svg viewBox="0 0 576 512">
-                            <use xlink:href="/img/graphics.svg#volume_up"></use>
-                        </svg>
-                      </button>
-                      <input id="volume" class="controller_volume" type="range" value="0" step="5">
-                      <div id="video_time_display" class="video_time_display">
-                        <span id="video_time_current" class="video_time_current">0:00</span>
-                        <span class>/</span>
-                        <span id="video_time_duration" class="video_time_duration">0:00</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
 
@@ -127,6 +94,39 @@
                   <div class="video_text">
                     <h1 id="video_title" class="video_title_text"></h1>
                     <h2 id="video_channel" class="video_channel_text"></h2>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ▼ Controller ▼ -->
+              <div class="controller">
+                <div class="controller_inner">
+                  <input id="seekbar" class="seekbar" type="range" value="0" max="1000">
+                  <button id="previous" class="controller_button">
+                    <svg viewBox="0 0 448 512">
+                        <use xlink:href="/img/graphics.svg#previous"></use>
+                    </svg>
+                  </button>
+                  <button id="play_pause" class="controller_button">
+                    <svg viewBox="0 0 448 512">
+                        <use xlink:href="/img/graphics.svg#pause"></use>
+                    </svg>
+                  </button>
+                  <button id="next" class="controller_button">
+                    <svg viewBox="0 0 448 512">
+                        <use xlink:href="/img/graphics.svg#next"></use>
+                    </svg>
+                  </button>
+                  <button id="mute" class="controller_button">
+                    <svg viewBox="0 0 576 512">
+                        <use xlink:href="/img/graphics.svg#volume_up"></use>
+                    </svg>
+                  </button>
+                  <input id="volume" class="controller_volume" type="range" value="0" step="5">
+                  <div id="video_time_display" class="video_time_display">
+                    <span id="video_time_current" class="video_time_current">0:00</span>
+                    <span class>/</span>
+                    <span id="video_time_duration" class="video_time_duration">0:00</span>
                   </div>
                 </div>
               </div>
