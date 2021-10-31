@@ -50,7 +50,8 @@ const controlYT = {
   },
 
   onReady(event) { // プレイヤー準備時
-    document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title;  // タイトル表示
+    document.getElementById('video_title').textContent = room.playlist[room.playlist_number].title; // 動画タイトル表示
+    document.getElementById('video_channel').textContent = room.playlist[room.playlist_number].channel; // 動画チャンネル表示
     controlYT.setVolume(event.target.getVolume()); // 初期音量設定
     event.target.mute(); // ミュート
     event.target.playVideo(); // 動画再生
@@ -62,8 +63,8 @@ const controlYT = {
     const duration = room.playlist[room.playlist_number].duration; // 全体時間
 
     document.getElementById('seekbar').value = (currentTime / duration) * 1e3; // シークバー動作
-    document.getElementById('now').textContent =  controlYT.getTime(currentTime);         
-    document.getElementById('total').textContent = ` / ${controlYT.getTime(duration)}`;
+    document.getElementById('video_time_current').textContent = controlYT.getTime(currentTime);         
+    document.getElementById('video_time_duration').textContent = controlYT.getTime(duration);
   },
 
   onStateChange(event) { // プレイヤー変更時

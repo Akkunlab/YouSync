@@ -7,8 +7,8 @@ const events = {
 
   checkDevice() { // デバイスチェック
     if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android|Mobile)/i)) { // モバイル
-      document.getElementsByClassName('volume')[0].style.display = 'none';      // ボリュームバー非表示
-      document.getElementsByClassName('video_time')[0].style.display = 'none';  // 動画時間非表示
+      document.getElementById('volume').style.display = 'none'; // ボリュームバー非表示
+      document.getElementById('video_time_display').style.display = 'none'; // 動画時間非表示
       user.setDevice = 'mobile';
     } else { // PC
       user.setDevice = 'pc';
