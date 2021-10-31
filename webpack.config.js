@@ -1,5 +1,6 @@
 require('dotenv').config();
 const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const enabledSourceMap = process.env.MODE === "development";
 
 module.exports = {
@@ -52,7 +53,9 @@ module.exports = {
       {
         test: /\.scss/,
         use: [
-          "style-loader",
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
           {
             loader: "css-loader",
             options: {
@@ -76,6 +79,9 @@ module.exports = {
   target: ["web", "es5"],
   
   plugins: [
-    new Dotenv()
+    new Dotenv(),
+    new MiniCssExtractPlugin({
+      filename: "../css/style.css",
+    })
   ]
 };

@@ -1,5 +1,6 @@
 node_modules/
 public/js/room.js
+public/css/
 src/assets/css
 test/
 *.env
