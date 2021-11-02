@@ -2,13 +2,11 @@
 <html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YouSync</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Kanit:wght@300&family=Noto+Sans+JP&family=Russo+One&display=swap">
-  <link rel="stylesheet" href="/css/index_m.css">
+<% const meta = {
+  title: 'YouSync',
+  fileName: 'index_m'
+}; %>
+<%- include('components/_head.ejs', { meta }) %>
 </head>
 
 <body>
