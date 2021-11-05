@@ -18,6 +18,7 @@ router.get('/:roomName', async function (req, res, next) {
   const data = roomData.data;
   const playlist = await getPlaylist(roomData.id); // Playlistを取得
 
+  data.id = roomData.id;
   data.playlist = playlist;
 
   // モバイルの場合
