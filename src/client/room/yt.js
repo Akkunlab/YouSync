@@ -50,22 +50,15 @@ const controlYT = {
   },
 
   onReady(event) { // プレイヤー準備時
-
-    // 動画タイトル表示
-    const videoTitleElements = document.getElementsByClassName('video_title_text');
-    for (let i = 0; i < videoTitleElements.length; i++) {
-      videoTitleElements[i].textContent = room.playlist[room.playlist_number].title;
-    }
-
-    document.getElementById('video_channel').textContent = room.playlist[room.playlist_number].channel; // 動画チャンネル表示
+    controlYT.load(null, event);
     controlYT.setVolume(event.target.getVolume()); // 初期音量設定
     event.target.mute(); // ミュート
     event.target.playVideo(); // 動画再生
-    timeUpdater = setInterval(() => controlYT.onTimeUpdate(event), 1000); // 1秒ごとに更新
+    timeUpdater = setInterval(controlYT.onTimeUpdate, 1000); // 1秒ごとに更新
   },
 
-  onTimeUpdate(event) { // 時間更新時
-    const currentTime = event.target.getCurrentTime(); // 現在時間
+  onTimeUpdate() { // 時間更新時
+    const currentTime = player.getCurrentTime(); // 現在時間
     const duration = room.playlist[room.playlist_number].duration; // 全体時間
 
     events.onChangeSeekBar((currentTime / duration) * 1e3); // シークバー動作
@@ -149,7 +142,23 @@ const controlYT = {
   },
 
   load(id) { // 動画をロード
-    player.loadVideoById(id);
+
+    if (id) player.loadVideoById(id);
+    
+    // 動画タイトル表示
+    const videoTitleElements = document.getElementsByClassName('video_title_text');
+
+    for (let i = 0; i < videoTitleElements.length; i++) {
+      videoTitleElements[i].textContent = room.playlist[room.playlist_number].title;
+    }
+
+    document.getElementById('video_channel').textContent = room.playlist[room.playlist_number].channel; // 動画チャンネル表示
+
+    // タイマーを初期化
+    if (timeUpdater) {
+      clearInterval(timeUpdater);
+      timeUpdater = setInterval(controlYT.onTimeUpdate, 1000); // 1秒ごとに更新
+    }
   },
 
   getTime(seconds) { // 時間の表記変換
