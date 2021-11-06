@@ -42,6 +42,7 @@ const events = {
     // 前へ，次への場合
     if (data.type === 'previous' || data.type === 'next') {
       data.room = {
+        id: room.id,
         playlist_number: room.playlist_number,
         playlist_length: room.playlist.length
       };
