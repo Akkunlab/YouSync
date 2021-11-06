@@ -1,5 +1,6 @@
-import { config, user } from "./config";
-import { controlYT } from "./yt";
+import { config, user } from './config';
+import { controlYT } from './yt';
+import { events } from './events';
 
 /* 基本設定 */
 const socket = io(config.host);
@@ -9,7 +10,7 @@ const socketEvents = {
 
   send(eventName, data) { // データ送信
     socket.emit(eventName, data);
-    // console.log(`[socket: ${eventName}] send ${data}`); // ログ出力
+    events.log(eventName, data) // ログ出力
   }
 
 };
@@ -17,13 +18,13 @@ const socketEvents = {
 /* 受信イベント */
 
 // プレイヤーボタンクリック
-socket.on("playerButton", data => {
+socket.on('playerButton', data => {
   controlYT.onReceiveButtonEvents(data);
-  // console.log(`[socket: playerButton] get ${JSON.stringify(data, null, 2)}`); // ログ出力
+  events.log('playerButton', data) // ログ出力
 });
 
 // 時刻同期
-socket.on("timeSync", data => {
+socket.on('timeSync', data => {
   data.t4 = Date.now();
 
   user.setDelayTime = ((data.t2 - data.t1) - (data.t4 - data.t3)) / 2; // 遅延時間

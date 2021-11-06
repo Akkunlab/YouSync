@@ -36,7 +36,16 @@ const events = {
       timestamp: { t1: events.getCorrectionTime(Date.now()) } // 現在時刻
     };
 
-    if (data.type === 'play_pause') data.type = player.getPlayerState() === 1 ? 'pause' : 'play'; // 再生，一時停止判断
+    // 再生，一時停止判断
+    if (data.type === 'play_pause') data.type = player.getPlayerState() === 1 ? 'pause' : 'play';
+
+    // 前へ，次への場合
+    if (data.type === 'previous' || data.type === 'next') {
+      data.room = {
+        playlist_number: room.playlist_number,
+        playlist_length: room.playlist.length
+      };
+    }
 
     controlYT.onClickButtonEvents(data); // 自分のPlayerを操作
     socketEvents.send('playerButton', data); // 送信
@@ -56,6 +65,11 @@ const events = {
     const falseColor = '#444';
 
     seekbar.style.cssText = `background: linear-gradient(to right, ${trueColor} 0%, ${trueColor} ${value}%, ${falseColor} ${value}%, ${falseColor} 100%);`
+  },
+
+  log(type, obj) { // ログ出力
+    console.log(`[${type}]`);
+    console.log(JSON.stringify(obj, null, 2));
   }
 
 };

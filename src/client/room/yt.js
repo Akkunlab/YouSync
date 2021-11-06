@@ -122,6 +122,10 @@ const controlYT = {
         deviceDelayTime.start = true;
         break;
       case 'pause': player.pauseVideo(); break;  // 一時停止
+      case 'previous':
+      case 'next':
+        room.playlist_number = data.playlist_number // room情報を更新
+        controlYT.load(room.playlist[room.playlist_number].id) // 動画をロード
     }
   },
 
@@ -142,6 +146,10 @@ const controlYT = {
       player.mute();
       volume.value = 0;
     }
+  },
+
+  load(id) { // 動画をロード
+    player.loadVideoById(id);
   },
 
   getTime(seconds) { // 時間の表記変換
