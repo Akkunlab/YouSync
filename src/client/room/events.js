@@ -68,6 +68,29 @@ const events = {
     seekbar.style.cssText = `background: linear-gradient(to right, ${trueColor} 0%, ${trueColor} ${value}%, ${falseColor} ${value}%, ${falseColor} 100%);`
   },
 
+  onSubmitSearch() { // search_formを送信
+    const input = document.getElementById('search_input');
+    const url = input.value.match(config.youtubeURL);
+
+    // 何も入力がない場合
+    if (!input.value) {
+      input.focus();
+      return;
+    }
+
+    // URLが不正な場合
+    if (!url) {
+      alert('***** エラー *****\n無効なURLです\nYouTubeのURLを入力して下さい');
+      input.focus();
+      return;
+    }
+
+    // URLが正しい場合
+    socketEvents.send('search', { roomId: room.id, value: input.value }); // 送信
+    input.value = '';
+    input.blur();
+  },
+
   log(type, obj) { // ログ出力
     console.log(`[${type}]`);
     console.log(JSON.stringify(obj, null, 2));

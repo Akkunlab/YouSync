@@ -18,11 +18,11 @@
 
     <!-- ▼ 検索 ▼ -->
     <div class="search">
-      <form class="search_form" autocomplete="off" action="#" @submit="search">
+      <form id="search_form" class="search_form" autocomplete="off" @submit="search" onsubmit="return false;">
         <input id="search_input" class="search_input" type="search" size="50" placeholder="URLを入力">
-        <label class="search_label" for="search_toggle">
+        <button class="search_label" type="submit">
           <svg viewBox="0 0 24 24"><use xlink:href="/img/graphics.svg#search"></use></svg>
-        </label>
+        </button>
       </form>
     </div>
 

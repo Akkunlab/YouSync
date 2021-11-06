@@ -1,6 +1,7 @@
 import { config, user } from './config';
 import { controlYT } from './yt';
 import { events } from './events';
+import { objects } from './objects';
 
 /* 基本設定 */
 const socket = io(config.host);
@@ -21,6 +22,13 @@ const socketEvents = {
 socket.on('playerButton', data => {
   controlYT.onReceiveButtonEvents(data);
   events.log('playerButton', data) // ログ出力
+});
+
+// 検索
+socket.on('search', data => {
+  room.playlist.push(data); // room情報を更新
+  objects.createPlayList(); // プレイリスト作成
+  events.log('Update', data) // ログ出力
 });
 
 // 時刻同期
