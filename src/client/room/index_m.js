@@ -1,6 +1,6 @@
 import { events } from "./events";
 import { objects } from "./objects";
-import { initYT, controlYT } from "./yt";
+import { initYT } from "./yt";
 import "../sass/room_m.scss"; // スタイルシートの読込
 
 /* view初期化 */
