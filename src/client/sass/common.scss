@@ -199,6 +199,7 @@ svg {
       border-radius: $item-border-radius;
       opacity: .95;
       background: $item-color;
+      display: none;
 
       .statistics_inner {
         padding: 1em;

@@ -92,8 +92,8 @@ const events = {
   },
 
   onShowStatistics() { // 統計情報を表示
-    const statistics = document.getElementById('statistics');
-    statistics.style.display = statistics.style.display === 'none' ? 'block' : 'none';
+    const statistics = document.getElementById('statistics').style;
+    statistics.display = statistics.display === 'none' || !statistics.display ? 'block' : 'none';
   },
 
   log(type, obj) { // ログ出力
