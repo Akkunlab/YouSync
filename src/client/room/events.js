@@ -91,6 +91,11 @@ const events = {
     input.blur();
   },
 
+  onShowStatistics() { // 統計情報を表示
+    const statistics = document.getElementById('statistics');
+    statistics.style.display = statistics.style.display === 'none' ? 'block' : 'none';
+  },
+
   log(type, obj) { // ログ出力
     console.log(`[${type}]`);
     console.log(JSON.stringify(obj, null, 2));

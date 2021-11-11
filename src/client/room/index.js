@@ -19,6 +19,7 @@ const init = (() => {
   document.getElementById('next').addEventListener('click', events.onClickPlayerButton);
   document.getElementById('mute').addEventListener('click', controlYT.setMute);
   document.getElementById('volume').addEventListener('click', controlYT.setVolume);
+  document.getElementById('user').addEventListener('click', events.onShowStatistics);
   document.getElementById('search_form').addEventListener('submit', events.onSubmitSearch);
   seekbar.addEventListener('change', events.onChangeSeekBar, false);
   seekbar.addEventListener('input', events.onChangeSeekBar, false);

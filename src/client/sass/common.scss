@@ -188,5 +188,21 @@ svg {
         border: none;
       }
     }
+
+    /* 統計情報 */
+    .statistics {
+      top: $header-height + $margin-side;
+      right: $margin-side;
+      width: 420px;
+      height: 200px;
+      position: absolute;
+      border-radius: $item-border-radius;
+      opacity: .95;
+      background: $item-color;
+
+      .statistics_inner {
+        padding: 1em;
+      }
+    }
   }
 }
