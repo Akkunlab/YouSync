@@ -387,3 +387,31 @@ $nav-transition-duration: .3s;
     }
   }
 }
+
+/*------------------------------------
+  Statistics
+------------------------------------*/
+.statistics {
+  top: $header-height;
+  right: $margin-side;
+  width: 420px;
+  height: 200px;
+  position: absolute;
+  border-radius: $item-border-radius;
+  opacity: .97;
+  background: $item-color;
+  border: solid 1px $border-color;
+  display: none;
+  z-index: 1;
+
+  .statistics_inner {
+    padding: 1em;
+
+    .statistics_title {
+      margin: 0 0 1em 0;
+    }
+    .statistics_contents p {
+      margin: .5em 0;
+    }
+  }
+}

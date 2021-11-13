@@ -2,6 +2,9 @@ import { config, user } from "./config";
 import { socketEvents } from "./socket";
 import { controlYT, player } from "./yt";
 
+/* 基本設定 */
+let timeUpdater; // 統計用タイマー
+
 /* イベント */
 const events = {
 
@@ -93,7 +96,32 @@ const events = {
 
   onShowStatistics() { // 統計情報を表示
     const statistics = document.getElementById('statistics').style;
-    statistics.display = statistics.display === 'none' || !statistics.display ? 'block' : 'none';
+
+    // 統計情報の表示を切り替え
+    if (statistics.display === 'none' || !statistics.display) {
+      statistics.display = 'block';
+    } else {
+      statistics.display = 'none';
+      clearInterval(timeUpdater);
+      return;
+    }
+    
+    // 統計情報を初期化
+    const correctionTime = document.getElementById('statistics_correction_time');
+    const currentTime = document.getElementById('statistics_current_time');
+    const delayTime = document.getElementById('statistics_delay_time');
+    const roundtripTime = document.getElementById('statistics_roundtrip_time');
+
+    correctionTime.textContent = events.getCorrectionTime(Date.now());
+    currentTime.textContent = Date.now();
+    delayTime.textContent = user.getDelayTime;
+    roundtripTime.textContent = user.getRoundtripTime;
+
+    // 0.05秒ごとに更新
+    timeUpdater = setInterval(() => {
+      correctionTime.textContent = events.getCorrectionTime(Date.now());
+      currentTime.textContent = Date.now();
+    }, 50);
   },
 
   log(type, obj) { // ログ出力
