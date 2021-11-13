@@ -99,13 +99,14 @@ const controlYT = {
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
 
-    events.timeSync() // 時刻同期
+    // events.timeSync() // 時刻同期
   },
 
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
-    data.timestamp.t2 = events.getCorrectionTime(Date.now()); // 現在時刻
+    const oneWayTime = events.getCorrectionTime(Date.now()) - data.timestamp.t1; // 片道時間
+    // const seekTime = data.currentTime + (oneWayTime + user.getDeviceDelayTime) * 1e-3;
+    const seekTime = data.currentTime;
 
-    const seekTime = data.currentTime + (data.timestamp.t2 - data.timestamp.t1 + user.getDeviceDelayTime) * 1e-3;
     player.seekTo(seekTime); // 再生位置を移動
 
     switch (data.type) {
@@ -120,6 +121,10 @@ const controlYT = {
         room.playlist_number = data.playlist_number // room情報を更新
         controlYT.load(room.playlist[room.playlist_number].id) // 動画をロード
     }
+
+    // 統計情報を更新
+    const oneWayTimeDiv = document.getElementById('statistics_one_way_time');
+    oneWayTimeDiv.textContent = oneWayTime;
   },
 
   setVolume(value) { // プレイヤーの音量設定
