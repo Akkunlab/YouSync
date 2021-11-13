@@ -111,11 +111,15 @@ const events = {
     const currentTime = document.getElementById('statistics_current_time');
     const delayTime = document.getElementById('statistics_delay_time');
     const roundtripTime = document.getElementById('statistics_roundtrip_time');
+    const oneWayTime = document.getElementById('statistics_one_way_time');
+    const deviceDelayTime = document.getElementById('statistics_device_delay_time');
 
     correctionTime.textContent = events.getCorrectionTime(Date.now());
     currentTime.textContent = Date.now();
     delayTime.textContent = user.getDelayTime;
     roundtripTime.textContent = user.getRoundtripTime;
+    deviceDelayTime.textContent = user.getDeviceDelayTime;
+    oneWayTime.textContent = 0;
 
     // 0.05秒ごとに更新
     timeUpdater = setInterval(() => {

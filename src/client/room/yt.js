@@ -81,6 +81,10 @@ const controlYT = {
         if (deviceDelayTime.start) {
           user.setDeviceDelayTime = performance.now() - deviceDelayTime.time;
           deviceDelayTime.start = false;
+
+          // 統計情報を更新
+          const deviceDelayTimeDiv = document.getElementById('statistics_device_delay_time');
+          deviceDelayTimeDiv.textContent = user.getDeviceDelayTime;
         }
 
         break;
@@ -95,7 +99,11 @@ const controlYT = {
 
   onClickButtonEvents(data) { // プレイヤーのボタン操作時
     switch (data.type) {
-      case 'play': player.playVideo(); break;    // 再生
+      case 'play':
+        player.playVideo();
+        deviceDelayTime.time = performance.now();
+        deviceDelayTime.start = true;
+        break;
       case 'pause': player.pauseVideo(); break;  // 一時停止
     }
 
@@ -104,18 +112,13 @@ const controlYT = {
 
   onReceiveButtonEvents(data) { // プレイヤーのボタン操作イベント受信時
     const oneWayTime = events.getCorrectionTime(Date.now()) - data.timestamp.t1; // 片道時間
-    // const seekTime = data.currentTime + (oneWayTime + user.getDeviceDelayTime) * 1e-3;
-    const seekTime = data.currentTime;
+    const seekTime = data.currentTime + (oneWayTime + user.getDeviceDelayTime) * 1e-3;
 
     player.seekTo(seekTime); // 再生位置を移動
 
     switch (data.type) {
-      case 'play': // 再生
-        player.playVideo();
-        deviceDelayTime.time = performance.now();
-        deviceDelayTime.start = true;
-        break;
-      case 'pause': player.pauseVideo(); break;  // 一時停止
+      case 'play': player.playVideo(); break; // 再生
+      case 'pause': player.pauseVideo(); break; // 一時停止
       case 'previous':
       case 'next':
         room.playlist_number = data.playlist_number // room情報を更新
