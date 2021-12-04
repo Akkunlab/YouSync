@@ -6,8 +6,7 @@
     "start": "node ./bin/www",
     "start_dev": "npm run build && node ./bin/www",
     "build": "webpack",
-    "build_dev": "webpack --watch",
-    "sass": "node-sass src/assets/sass/ --output src/assets/css/ --output-style compressed --watch --source-map true"
+    "build_dev": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
