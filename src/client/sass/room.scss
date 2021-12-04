@@ -249,6 +249,7 @@ $nav-transition-duration: .3s;
       $seekbar-false-color: #444;
 
       width: 100%;
+      padding-bottom: 5px;
     
       &:hover .video_time_seekbar_input,
       &.hover .video_time_seekbar_input {
