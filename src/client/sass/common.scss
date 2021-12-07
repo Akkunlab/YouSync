@@ -122,14 +122,21 @@ svg {
     /* ロゴ */
     .logo {
       height: $header-height;
-  
-      .logo_text {
-        line-height: $header-height;
-        margin: 0;
-        padding: 0 0.5em;
-        font-size: 1.2em;
-        font-family: 'Russo One', sans-serif;
-        text-align: center;
+
+      .logo_link {
+
+        @include tablet {
+          display: none;
+        };
+
+        .logo_text {
+          line-height: $header-height;
+          margin: 0;
+          padding: 0 0.5em;
+          font-size: 1.2em;
+          font-family: 'Russo One', sans-serif;
+          text-align: center;
+        }
       }
     }
   
