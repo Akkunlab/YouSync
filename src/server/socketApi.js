@@ -4,6 +4,7 @@ const config = require('./config');
 const db = require('./firebase');
 const yt = require('./youtubeApi');
 const Video = require('./videoClass');
+const User = require('./userClass');
 
 /* rooms */
 const rooms = io.of('/rooms').on('connection', socket => {
@@ -55,11 +56,51 @@ const rooms = io.of('/rooms').on('connection', socket => {
 });
 
 /* events */
+const eventsList = {};
 const events = io.of('/events').on('connection', socket => {
+  let eventName; // event名
 
   /* 受信イベント */
-  socket.on('test', data => {
-    log('socket: test', data); // ログ出力
+
+  // 入室
+  socket.on('join', data => {
+    eventName = data.name;
+    const user = new User(socket.id); // インスタンスを作成
+
+    if (!eventsList[eventName]) eventsList[eventName] = {}; // Objectがない場合はObjectを作成
+
+    eventsList[eventName][user.myId] = user; // userを追加
+    log('socket: join', data); // ログ出力
+    console.log(eventsList[eventName]); // ログ出力
+  });
+
+  // 管理者入室
+  socket.on('mJoin', data => {
+    eventName = data.name;
+    const user = new User(socket.id); // インスタンスを作成
+
+    if (!eventsList[eventName]) eventsList[eventName] = {}; // Objectがない場合はObjectを作成
+
+    eventsList[eventName][user.myId] = user; // userを追加
+    eventsList[eventName].managerId = user.myId; // managerを追加
+    log('socket: join', data); // ログ出力
+    console.log(eventsList[eventName]); // ログ出力
+  });
+
+  // 退出
+  socket.on('disconnect', () => {
+    if (!eventsList[eventName]) return; // 入室0人の場合
+    if (!(socket.id in eventsList[eventName])) return; // 未入室の場合
+    
+    // managerの場合は削除
+    if (eventsList[eventName].managerId) {
+      if (eventsList[eventName].managerId === socket.id) {
+        delete eventsList[eventName].managerId;
+      }
+    }
+
+    delete eventsList[eventName][socket.id]; // userを削除
+    console.log(eventsList[eventName]); // ログ出力
   });
 });
 

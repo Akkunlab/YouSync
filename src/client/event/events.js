@@ -20,14 +20,13 @@ const events = {
   },
 
   initEnter() { // 入室モード開始
-    console.log('入室モード開始');
     document.getElementById('entry').remove(); // entryコンポーネントを削除
-    socketEvents.send('test', 'data'); // 送信
+    socketEvents.send('join', { name: eventData.name }); // 送信
   },
 
   initManagement() { // 管理モード開始
-    console.log('管理モード開始');
     document.getElementById('entry').remove(); // entryコンポーネントを削除
+    socketEvents.send('mJoin', { name: eventData.name }); // 送信
   },
 
   log(type, obj) { // ログ出力

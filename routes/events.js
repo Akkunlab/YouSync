@@ -20,10 +20,11 @@ router.get('/:eventName', async function (req, res, next) {
   const state = getEventState(startDate, endDate); // Eventの状態を取得
 
   const sendData = {
+    name: data.name, // Eventの名前
+    des: data.des, // Eventの説明
     state,
     startDate,
-    endDate,
-    des: data.des // Eventの説明
+    endDate
   };
 
   res.render('event', {
