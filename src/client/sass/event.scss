@@ -59,6 +59,11 @@
       border-radius: $normal-border-radius;
       box-shadow: 0 2px 4px $box-shadow-color;
       background: $section-color;
+      transition: .3s;
+
+      &:hover {
+        background: #272727;
+      }
 
       @include bk(1000px) {
         height: 200px;
@@ -69,6 +74,7 @@
         left: 50%;
         font-size: 3em;
         position: absolute;
+        user-select: none;
         transform: translateY(-50%) translateX(-50%);
       }
     }

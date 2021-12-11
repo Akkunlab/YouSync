@@ -15,6 +15,16 @@ const events = {
       information.style.display = 'block';
       message.textContent = 'このイベントは終了しました';
     }
+  },
+
+  initEnter() { // 入室モード開始
+    console.log('入室モード開始');
+    document.getElementById('entry').remove(); // entryコンポーネントを削除
+  },
+
+  initManagement() { // 管理モード開始
+    console.log('管理モード開始');
+    document.getElementById('entry').remove(); // entryコンポーネントを削除
   }
 
 };
