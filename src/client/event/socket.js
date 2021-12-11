@@ -2,7 +2,7 @@ import { config } from './config';
 import { events } from './events';
 
 /* 基本設定 */
-const socket = io(config.host);
+const socket = io(`${config.host}/events`);
 
 /* イベント */
 const socketEvents = {

@@ -5,16 +5,17 @@ const db = require('./firebase');
 const yt = require('./youtubeApi');
 const Video = require('./videoClass');
 
-io.on('connection', socket => {
+/* rooms */
+const rooms = io.of('/rooms').on('connection', socket => {
 
-  /* rooms: 受信イベント */
+  /* 受信イベント */
 
   // プレイヤーボタンクリック
   socket.on('playerButton', data => {
 
     if (data.type === 'previous' || data.type === 'next') { // Playlist番号を更新
       data.playlist_number = getNextPlaylistNumber(data);
-      io.sockets.emit('playerButton', data); // 送信
+      rooms.emit('playerButton', data); // 送信
       updatePlaylistNumber(data); // DBを更新
     } else {
       socket.broadcast.emit('playerButton', data); // 送信
@@ -33,7 +34,7 @@ io.on('connection', socket => {
     const video = new Video(id);
     const videoInfo = await yt.getVideoInfo(video); // 動画情報を取得
 
-    io.sockets.emit('search', videoInfo); // 送信
+    rooms.emit('search', videoInfo); // 送信
     updatePlaylist(data.roomId, videoInfo) // DBを更新
     log('socket: search', data); // ログ出力
   });
@@ -43,11 +44,20 @@ io.on('connection', socket => {
     data.t2 = Date.now();
     data.t3 = Date.now();
     
-    io.to(socket.id).emit('timeSync', data);
+    rooms.to(socket.id).emit('timeSync', data);
     log('socket: timeSync', data); // ログ出力
   });
 
   /* events: 受信イベント */
+  socket.on('test', data => {
+    log('socket: test', data); // ログ出力
+  });
+});
+
+/* events */
+const events = io.of('/events').on('connection', socket => {
+
+  /* 受信イベント */
   socket.on('test', data => {
     log('socket: test', data); // ログ出力
   });

@@ -4,7 +4,7 @@ import { events } from './events';
 import { objects } from './objects';
 
 /* 基本設定 */
-const socket = io(config.host);
+const socket = io(`${config.host}/rooms`);
 
 /* イベント */
 const socketEvents = {
@@ -34,6 +34,7 @@ socket.on('search', data => {
 // 時刻同期
 socket.on('timeSync', data => {
   data.t4 = Date.now();
+  console.log('data.t4', data.t4);
 
   user.setDelayTime = ((data.t2 - data.t1) - (data.t4 - data.t3)) / 2; // 遅延時間
   user.setRoundtripTime = (data.t2 - data.t1) + (data.t4 - data.t3);   // 往復時間
