@@ -68,8 +68,12 @@ const events = io.of('/events').on('connection', socket => {
     const user = new User(socket.id); // インスタンスを作成
 
     if (!eventsList[eventName]) eventsList[eventName] = {}; // Objectがない場合はObjectを作成
+    if (eventsList[eventName].managerId) {
+      events.to(eventsList[eventName].managerId).emit('mDataAdd', user); // managerにデータを送信
+    }
 
     eventsList[eventName][user.myId] = user; // userを追加
+
     log('socket: join', data); // ログ出力
     console.log(eventsList[eventName]); // ログ出力
   });
@@ -83,6 +87,9 @@ const events = io.of('/events').on('connection', socket => {
 
     eventsList[eventName][user.myId] = user; // userを追加
     eventsList[eventName].managerId = user.myId; // managerを追加
+
+    events.to(socket.id).emit('mData', eventsList[eventName]); // managerにデータを送信
+
     log('socket: join', data); // ログ出力
     console.log(eventsList[eventName]); // ログ出力
   });
@@ -94,12 +101,16 @@ const events = io.of('/events').on('connection', socket => {
     
     // managerの場合は削除
     if (eventsList[eventName].managerId) {
+
+      events.to(eventsList[eventName].managerId).emit('mDataDelete', eventsList[eventName][socket.id]); // managerにデータを送信
+
       if (eventsList[eventName].managerId === socket.id) {
         delete eventsList[eventName].managerId;
       }
     }
 
     delete eventsList[eventName][socket.id]; // userを削除
+
     console.log(eventsList[eventName]); // ログ出力
   });
 });

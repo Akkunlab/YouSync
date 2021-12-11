@@ -16,4 +16,19 @@ const socketEvents = {
 
 /* 受信イベント */
 
+// 管理者Data
+socket.on('mData', data => {
+  events.log('mData', data) // ログ出力
+});
+
+// 管理者Data追加
+socket.on('mDataAdd', data => {
+  events.log('mDataAdd', data) // ログ出力
+});
+
+// 管理者Data削除
+socket.on('mDataDelete', data => {
+  events.log('mDataDelete', data) // ログ出力
+});
+
 export { socketEvents };
