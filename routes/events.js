@@ -15,12 +15,20 @@ router.get('/:eventName', async function (req, res, next) {
 
   // 指定のeventがある時
   const data = eventData.data;
+  const startDate = data.startDate.toDate();
+  const endDate = data.endDate.toDate();
+  const state = getEventState(startDate, endDate); // Eventの状態を取得
 
-  data.id = eventData.id;
+  const sendData = {
+    state,
+    startDate,
+    endDate,
+    des: data.des // Eventの説明
+  };
 
   res.render('event', {
     title: data.name,
-    event: JSON.stringify(data)
+    event: JSON.stringify(sendData)
   });
 });
 
@@ -39,6 +47,19 @@ const getEvent = async eventName => {
   });
 
   return data;
+}
+
+/* Eventの状態を取得 */
+const getEventState = (start, end) => {
+  const now = new Date();
+
+  if (now < start) {
+    return 0; // 未開催
+  } else if (now < end) {
+    return 1; // 開催中
+  } else {
+    return 2; // 終了
+  }
 }
 
 module.exports = router;

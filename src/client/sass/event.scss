@@ -1,0 +1,76 @@
+@use "sass:math";
+@import "common.scss";
+
+/*------------------------------------
+  Contents
+------------------------------------*/
+.contents {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+.entry,
+.information {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translateY(-50%) translateX(-50%);
+  display: none;
+}
+
+/* information */
+.information {
+
+  .information_inner {
+    font-size: 2em;
+    text-align: center;
+
+    // .information_title {
+
+    // }
+    // .information_contents {
+
+    // }
+  }
+}
+
+/* entry */
+.entry {
+  width: 1000px;
+  margin: 0 auto;
+
+  @include bk(1000px) {
+    width: 100%;
+  };
+
+  .entry_inner {
+    display: flex;
+
+    @include bk(1000px) {
+      flex-flow: column;
+    };
+
+    .entry_select {
+      width: calc(100% - (#{$margin-side} * 2));
+      height: 600px;
+      margin: $margin-side;
+      text-align: center;
+      position:relative;
+      border-radius: $normal-border-radius;
+      box-shadow: 0 2px 4px $box-shadow-color;
+      background: $section-color;
+
+      @include bk(1000px) {
+        height: 200px;
+      };
+
+      .entry_select_title {
+        top: 50%;
+        left: 50%;
+        font-size: 3em;
+        position: absolute;
+        transform: translateY(-50%) translateX(-50%);
+      }
+    }
+  }
+}

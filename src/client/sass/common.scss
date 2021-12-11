@@ -14,6 +14,7 @@ $svg-size: 32px;
 $border-bottom-weight: 2px;
 $margin-side: 30px;
 $list-border-radius: 50px;
+$normal-border-radius: 10px;
 $image-border-radius: 4px;
 $item-border-radius: 4px;
 $transition-duration: .5s;
@@ -28,6 +29,7 @@ $border-active-color: #3f51b5;
 $text-primary-color: #fff;
 $text-secondary-color: #aaa;
 $blocker-background-color: rgba(0, 0, 0, 0.6);
+$box-shadow-color: #0f0f0f80;
 
 /* レスポンシブ */
 $pc-width: 1280px;    // PC横幅
