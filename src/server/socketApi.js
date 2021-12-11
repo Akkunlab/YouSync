@@ -7,7 +7,7 @@ const Video = require('./videoClass');
 
 io.on('connection', socket => {
 
-  /* 受信イベント */
+  /* rooms: 受信イベント */
 
   // プレイヤーボタンクリック
   socket.on('playerButton', data => {
@@ -45,6 +45,11 @@ io.on('connection', socket => {
     
     io.to(socket.id).emit('timeSync', data);
     log('socket: timeSync', data); // ログ出力
+  });
+
+  /* events: 受信イベント */
+  socket.on('test', data => {
+    log('socket: test', data); // ログ出力
   });
 });
 

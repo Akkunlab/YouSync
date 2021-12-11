@@ -1,3 +1,5 @@
+import { socketEvents } from './socket';
+
 /* イベント */
 const events = {
 
@@ -20,11 +22,17 @@ const events = {
   initEnter() { // 入室モード開始
     console.log('入室モード開始');
     document.getElementById('entry').remove(); // entryコンポーネントを削除
+    socketEvents.send('test', 'data'); // 送信
   },
 
   initManagement() { // 管理モード開始
     console.log('管理モード開始');
     document.getElementById('entry').remove(); // entryコンポーネントを削除
+  },
+
+  log(type, obj) { // ログ出力
+    console.log(`[${type}]`);
+    console.log(JSON.stringify(obj, null, 2));
   }
 
 };
