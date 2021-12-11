@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<% const meta = {
+  title: `${ title } | YouSync`,
+  fileName: 'event'
+}; %>
+<%- include('components/_head.ejs', { meta }) %>
+</head>
+
+<body>
+
+  <div class="wrap">
+    
+    <!-- ▼ Contents ▼ -->
+    <div class="contents"></div>
+  </div>
+
+  <!-- ▼ JavaScript ▼ -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>const getData = '<%- event %>'; const eventData = getData ? JSON.parse(getData) : null;</script>
+  <script type="text/javascript" src="/js/event.js"></script>
+
+</body>
+</html>

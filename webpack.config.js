@@ -9,7 +9,8 @@ module.exports = {
     "index": "./src/client/index/index.js",
     "index_m": "./src/client/index/index_m.js",
     "room": "./src/client/room/index.js",
-    "room_m": "./src/client/room/index_m.js"
+    "room_m": "./src/client/room/index_m.js",
+    "event": "./src/client/event/index.js"
   },
   
   output: {
