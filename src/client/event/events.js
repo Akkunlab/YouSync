@@ -31,7 +31,14 @@ const events = {
   },
 
   onClickUnit(e) { // Unitクリックイベント
-    console.log(e.target);
+    const target = e.target;
+
+    if (e.target.className === 'ms_unit_inner') {
+      const input = target.firstChild.firstChild;
+      target.firstChild.classList.toggle('is-show');
+      input.select();
+    }
+    if (e.target.className === 'ms_unit_settings is-show') target.classList.toggle('is-show');
   },
 
   log(type, obj) { // ログ出力

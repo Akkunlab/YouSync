@@ -120,6 +120,24 @@
             user-select: none;
             box-shadow: 0 2px 4px $box-shadow-color;
             background: $item-color;
+
+            .ms_unit_settings {
+              width: 100%;
+              display: none;
+
+              .ms_unit_number_input,
+              .ms_unit_deley_input {
+                width: 80%;
+                padding: .3em;
+                margin: .5em auto;
+                border-radius: $item-border-radius;
+              }
+            }
+            .ms_unit_settings.is-show {
+              display: flex;
+              flex-flow: column;
+              justify-content: space-around;
+            }
           }
         }
       }
