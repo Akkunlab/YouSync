@@ -69,22 +69,16 @@ const three = {
   },
 
   scene2() {
-    let screen, controls;
+    let screen;
 
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 10;
+    camera.position.z = 3.0;
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
-    // コントローラ
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.2;
-    controls.update();
 
     // 平面を作成
     video.play();
@@ -97,7 +91,6 @@ const three = {
     /* Three.js: アニメーション */
     const animate = () => {
       requestAnimationFrame(animate);
-      controls.update();
       renderer.render(scene, camera);
     };
 
