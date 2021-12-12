@@ -39,7 +39,7 @@ const events = {
   initManagement() { // 管理モード開始
     document.getElementById('ms').style.display = 'block'; // msコンポーネントを表示
     document.getElementById('entry').remove(); // entryコンポーネントを削除
-    socketEvents.send('mJoin', { name: eventData.name }); // 送信
+    socketEvents.send('mJoin', { name: eventData.name, displayName: 'manager' }); // 送信
   },
 
   initTimeSync() { // 時刻同期初期化
@@ -61,6 +61,7 @@ const events = {
   },
 
   onClickEntry() { // 入室クリックイベント
+    document.getElementById('modal').style.display = 'block';
     events.onClickBlocker({ target: { tagName: 'DIV' } });
   },
 
@@ -74,12 +75,20 @@ const events = {
   onClickUnit(e) { // Unitクリックイベント
     const target = e.target;
 
-    if (e.target.className === 'ms_unit_inner') {
-      const input = target.firstChild.firstChild;
-      target.firstChild.classList.toggle('is-show');
+    if (e.target.className === 'ms_unit_content') {
+      const input = target.parentNode.lastChild.firstChild;
+      target.parentNode.firstChild.classList.toggle('is-hidden');
+      target.parentNode.lastChild.classList.toggle('is-show');
       input.select();
     }
-    if (e.target.className === 'ms_unit_settings is-show') target.classList.toggle('is-show');
+    if (e.target.className === 'ms_unit_settings is-show') {
+      target.parentNode.firstChild.classList.toggle('is-hidden');
+      target.classList.toggle('is-show');
+    }
+    if (e.target.className === 'ms_unit_inner') {
+      target.firstChild.classList.toggle('is-hidden');
+      target.lastChild.classList.toggle('is-show');
+    }
   },
 
   showDisplayName(name) { // 表示名を表示

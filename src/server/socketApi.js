@@ -60,7 +60,7 @@ const events = io.of('/events').on('connection', socket => {
   // 入室
   socket.on('join', data => {
     eventName = data.name;
-    const user = new User(socket.id); // インスタンスを作成
+    const user = new User(socket.id, data.displayName); // インスタンスを作成
 
     if (!eventsList[eventName]) eventsList[eventName] = {}; // Objectがない場合はObjectを作成
     if (eventsList[eventName].managerId) {
@@ -76,14 +76,14 @@ const events = io.of('/events').on('connection', socket => {
   // 管理者入室
   socket.on('mJoin', data => {
     eventName = data.name;
-    const user = new User(socket.id); // インスタンスを作成
+    const user = new User(socket.id, data.displayName); // インスタンスを作成
 
     if (!eventsList[eventName]) eventsList[eventName] = {}; // Objectがない場合はObjectを作成
 
+    events.to(socket.id).emit('mData', eventsList[eventName]); // managerにデータを送信
+
     eventsList[eventName][user.myId] = user; // userを追加
     eventsList[eventName].managerId = user.myId; // managerを追加
-
-    events.to(socket.id).emit('mData', eventsList[eventName]); // managerにデータを送信
 
     log('socket: join', data); // ログ出力
     console.log(eventsList[eventName]); // ログ出力

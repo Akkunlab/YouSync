@@ -21,6 +21,7 @@
   padding: 30px;
   text-align: center;
   position: absolute;
+  display: none;
   transform: translate(-50%, -50%);
   border-radius: $normal-border-radius;
   background: $item-color;
@@ -195,11 +196,18 @@
             font-size: 1.2em;
             border-radius: $item-border-radius;
             user-select: none;
+            position: relative;
             box-shadow: 0 2px 4px $box-shadow-color;
             background: $item-color;
 
+            .ms_unit_content {
+              width: 100%;
+              font-size: 1.2em;
+              position: absolute;
+            }
             .ms_unit_settings {
               width: 100%;
+              position: absolute;
               display: none;
 
               .ms_unit_number_input,
@@ -209,6 +217,9 @@
                 margin: .5em auto;
                 border-radius: $item-border-radius;
               }
+            }
+            .ms_unit_content.is-hidden {
+              visibility: hidden;
             }
             .ms_unit_settings.is-show {
               display: flex;
