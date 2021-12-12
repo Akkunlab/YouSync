@@ -25,8 +25,13 @@ const events = {
   },
 
   initManagement() { // 管理モード開始
+    document.getElementById('ms').style.display = 'block'; // msコンポーネントを表示
     document.getElementById('entry').remove(); // entryコンポーネントを削除
     socketEvents.send('mJoin', { name: eventData.name }); // 送信
+  },
+
+  onClickUnit(e) { // Unitクリックイベント
+    console.log(e.target);
   },
 
   log(type, obj) { // ログ出力

@@ -80,3 +80,49 @@
     }
   }
 }
+
+/* management system */
+.ms {
+  display: none;
+
+  .ms_inner {
+    text-align: center;
+    
+    .ms_title {
+      font-size: 2em;
+      margin: 20px 0 0 0;
+    }
+    .ms_contents {
+
+      .ms_unit_list {
+        display: flex;
+        flex-wrap: wrap;
+
+        .ms_unit {
+          width: calc(100% / 7);
+
+          @include pc {
+            width: calc(100% / 5);
+          };
+          @include tablet {
+            width: calc(100% / 2);
+          };
+          @include mobile {
+            width: 100%;
+          };
+
+          .ms_unit_inner {
+            height: 110px;
+            line-height: 110px;
+            margin: 20px;
+            font-size: 1.2em;
+            border-radius: $item-border-radius;
+            user-select: none;
+            box-shadow: 0 2px 4px $box-shadow-color;
+            background: $item-color;
+          }
+        }
+      }
+    }
+  }
+}
