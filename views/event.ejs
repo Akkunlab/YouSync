@@ -51,9 +51,17 @@
     </div>
   </div>
 
+  <!-- ▼ Source ▼ -->
+  <div class="source">
+    <video id="video" loop crossOrigin="anonymous" playsinline style="display:none">
+      <source src="/video/bbb.mp4" type='video/mp4'>
+    </video>
+  </div>
+
   <!-- ▼ JavaScript ▼ -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://unpkg.com/three@0.131.3/build/three.min.js"></script>
+  <script src="https://unpkg.com/three@0.131.3/examples/js/controls/OrbitControls.js"></script>
   <script>const getData = '<%- event %>'; const eventData = getData ? JSON.parse(getData) : null;</script>
   <script type="text/javascript" src="/js/event.js"></script>
 
