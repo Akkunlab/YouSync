@@ -1,3 +1,4 @@
+import { config, user } from './config';
 import { socketEvents } from './socket';
 import { initThree } from './three';
 
@@ -30,6 +31,24 @@ const events = {
     document.getElementById('ms').style.display = 'block'; // msコンポーネントを表示
     document.getElementById('entry').remove(); // entryコンポーネントを削除
     socketEvents.send('mJoin', { name: eventData.name }); // 送信
+  },
+
+  initTimeSync() { // 時刻同期初期化
+    const interval = config.timeSyncInterval;
+
+    setTimeout(function run() {
+      events.timeSync()
+      setTimeout(run, interval);
+    }, 100);
+  },
+
+  timeSync() { // 時刻同期
+    const data = { t1: Date.now() };
+    socketEvents.send('timeSync', data); // 送信
+  },
+
+  getCorrectionTime(time) { // 補正した時間を取得
+    return time + user.getDelayTime;
   },
 
   onClickUnit(e) { // Unitクリックイベント

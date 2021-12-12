@@ -48,11 +48,6 @@ const rooms = io.of('/rooms').on('connection', socket => {
     rooms.to(socket.id).emit('timeSync', data);
     log('socket: timeSync', data); // ログ出力
   });
-
-  /* events: 受信イベント */
-  socket.on('test', data => {
-    log('socket: test', data); // ログ出力
-  });
 });
 
 /* events */
@@ -92,6 +87,15 @@ const events = io.of('/events').on('connection', socket => {
 
     log('socket: join', data); // ログ出力
     console.log(eventsList[eventName]); // ログ出力
+  });
+
+  // 時刻同期
+  socket.on('timeSync', data => {
+    data.t2 = Date.now();
+    data.t3 = Date.now();
+    
+    events.to(socket.id).emit('timeSync', data);
+    log('socket: timeSync', data); // ログ出力
   });
 
   // 退出

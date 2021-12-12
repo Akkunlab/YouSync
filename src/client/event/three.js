@@ -1,3 +1,5 @@
+import { events } from './events';
+
 /* グローバル変数 */
 let scene, camera, renderer;
 
@@ -50,8 +52,9 @@ const three = {
     /* Three.js: アニメーション */
     const animate = () => {
       requestAnimationFrame(animate);
-  
-      const t = Date.now() / 500;
+
+      const now = events.getCorrectionTime(Date.now());
+      const t = now / 500;
       const r = 10.0;
       const lx = r * Math.cos(t);
       const lz = r * Math.sin(t);
