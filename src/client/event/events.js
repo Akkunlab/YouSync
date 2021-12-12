@@ -22,8 +22,17 @@ const events = {
   },
 
   initEnter() { // 入室モード開始
+    const input = document.getElementById('modal_name');
+
+    // 何も入力がない場合
+    if (!input.value) {
+      input.focus();
+      return;
+    }
+
+    events.onClickBlocker({ target: { tagName: 'DIV' } });
     document.getElementById('entry').remove(); // entryコンポーネントを削除
-    socketEvents.send('join', { name: eventData.name }); // 送信
+    socketEvents.send('join', { name: eventData.name, displayName: input.value }); // 送信
     initThree(); // Three.js初期化
   },
 
@@ -51,6 +60,17 @@ const events = {
     return time + user.getDelayTime;
   },
 
+  onClickEntry() { // 入室クリックイベント
+    events.onClickBlocker({ target: { tagName: 'DIV' } });
+  },
+
+  onClickBlocker(e) { // Blockerクリックイベント
+    if (e.target.tagName === 'DIV' || e.target.tagName === 'SPAN') {
+      document.getElementById('blocker').classList.toggle('is-show');
+      document.getElementById('modal').classList.toggle('is-show');
+    }
+  },
+
   onClickUnit(e) { // Unitクリックイベント
     const target = e.target;
 
@@ -60,6 +80,18 @@ const events = {
       input.select();
     }
     if (e.target.className === 'ms_unit_settings is-show') target.classList.toggle('is-show');
+  },
+
+  showDisplayName(name) { // 表示名を表示
+    const display = document.getElementById('display_name');
+    const text = document.getElementById('display_name_text');
+    text.textContent = name;
+    display.style.display = 'block';
+  },
+
+  hiddenDisplayName() { // 表示名を非表示
+    const display = document.getElementById('display_name');
+    display.style.display = 'none';
   },
 
   log(type, obj) { // ログ出力

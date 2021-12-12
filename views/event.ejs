@@ -12,6 +12,16 @@
 <body>
 
   <div class="wrap">
+
+    <!-- ▼ Blocker ▼ -->
+    <div id="blocker" class="blocker"></div>
+    <div id="modal" class="modal">
+      <span id="modal_close" class="modal_close">✖️</span>
+      <div class="modal_content">
+        <input id="modal_name" class="modal_name_input" type="text" name="name" size="20" placeholder="表示名">
+        <button type="button" class="modal_button" id="modal_button">入室</button>
+      </div>
+    </div>
     
     <!-- ▼ Contents ▼ -->
     <div class="contents">
@@ -46,6 +56,11 @@
             <ul id="unit_list" class="ms_unit_list"></ul>
           </div>
         </div>
+      </div>
+
+      <!-- ▼ Display Name ▼ -->
+      <div id="display_name" class="display_name">
+        <span id="display_name_text" class="display_name_text"></span>
       </div>
 
     </div>
