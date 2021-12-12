@@ -1,23 +1,42 @@
 /* グローバル変数 */
 let scene, camera, renderer;
-let cube;
+let light, sphere, plane;
 
 /* Three.js: 初期化 */
 const initThree = () => {
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  camera.position.z = 5;
+  camera.position.set(0, 5, 10);
+  camera.lookAt(new THREE.Vector3(0, 0, 0));
 
   renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.shadowMap.enabled = true;
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // 立方体を作成
-  const geometry = new THREE.BoxBufferGeometry();
-  const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
+  // ライト
+  light = new THREE.SpotLight(0xffffff, 1, 100, Math.PI / 4, 1); // (色, 強さ, 距離, 角度, ボケ具合, 減衰率)
+  light.castShadow = true;
+  light.shadow.mapSize.width = 2048;
+  light.shadow.mapSize.height = 2048;
+  scene.add(light);
+
+  // 球
+  const sphereGeometry = new THREE.SphereBufferGeometry(1, 32, 16);
+  const sphereMaterial = new THREE.MeshStandardMaterial({ color: 0x31ff2a, roughness: 0.0 });
+  sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+  sphere.castShadow = true;
+  sphere.position.set(0, 1, 0);
+  scene.add(sphere);
+
+  // 平面
+  const planeGeometry = new THREE.PlaneBufferGeometry(10, 10, 5, 5);
+  const planeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide, roughness: 0.0 });
+  plane = new THREE.Mesh(planeGeometry, planeMaterial);
+  plane.receiveShadow = true;
+  plane.rotation.set(Math.PI / 2, 0, 0); 
+  scene.add(plane);
 
   animate();
 }
@@ -25,11 +44,24 @@ const initThree = () => {
 /* Three.js: アニメーション */
 const animate = () => {
   requestAnimationFrame(animate);
-
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
+  const t = Date.now() / 500;
+  const r = 10.0;
+  const lx = r * Math.cos(t);
+  const lz = r * Math.sin(t);
+  const ly = 6.0 + 5.0 * Math.sin(t / 3.0);
+  light.position.set(lx, ly, lz);
+  light.lookAt(new THREE.Vector3(0, 0, 0));
   renderer.render(scene, camera);
 };
+
+/* Three.js: リサイズ */
+const onWindowResize = () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+window.addEventListener('resize', onWindowResize);
 
 export { initThree };
