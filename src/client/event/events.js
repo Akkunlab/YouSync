@@ -1,4 +1,5 @@
 import { socketEvents } from './socket';
+import { initThree } from './three';
 
 /* イベント */
 const events = {
@@ -22,6 +23,7 @@ const events = {
   initEnter() { // 入室モード開始
     document.getElementById('entry').remove(); // entryコンポーネントを削除
     socketEvents.send('join', { name: eventData.name }); // 送信
+    initThree(); // Three.js初期化
   },
 
   initManagement() { // 管理モード開始
