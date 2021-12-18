@@ -177,7 +177,7 @@
         flex-wrap: wrap;
 
         .ms_unit {
-          width: calc(100% / 7);
+          width: calc(100% / 12);
 
           @include pc {
             width: calc(100% / 5);
@@ -207,6 +207,7 @@
             }
             .ms_unit_settings {
               width: 100%;
+              height: 100%;
               position: absolute;
               display: none;
 

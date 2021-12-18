@@ -36,7 +36,7 @@ const objects = {
       deley = document.createElement('input');
       deley.setAttribute('type', 'number');
       deley.setAttribute('class', 'ms_unit_deley_input');
-      deley.setAttribute('placeholder', '遅延時間');
+      deley.setAttribute('placeholder', 'delay');
       
       itemSettings.appendChild(number);
       itemSettings.appendChild(deley);

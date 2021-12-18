@@ -7,6 +7,7 @@ let scene, camera, renderer;
 const initThree = () => {
   three.scene1();
   // three.scene2();
+  window.addEventListener('resize', onWindowResize);
 }
 
 /* Three.js */
@@ -106,7 +107,5 @@ const onWindowResize = () => {
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
 }
-
-window.addEventListener('resize', onWindowResize);
 
 export { initThree };
