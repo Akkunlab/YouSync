@@ -34,6 +34,7 @@ const events = {
     events.onClickBlocker({ target: { tagName: 'DIV' } });
     document.getElementById('entry').remove(); // entryコンポーネントを削除
     socketEvents.send('join', { name: eventData.name, displayName: eventData.displayName }); // 送信
+    events.showDisplayName(eventData.displayName); // 表示名を表示
     initThree(); // Three.js初期化
   },
 

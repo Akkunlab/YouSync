@@ -39,12 +39,12 @@ socket.on('mDataDelete', data => {
   events.log('mDataDelete', mData); // ログ出力
 });
 
-  // 管理システム変更
+// 管理システム変更
 socket.on('MSChange', data => {
   const func = {
 
     ms_display_name() { // 表示名を表示
-      data.value ? events.showDisplayName(eventData.displayName): events.hiddenDisplayName();
+      data.value ? events.showDisplayName(eventData.displayName) : events.hiddenDisplayName();
     }
 
   };
