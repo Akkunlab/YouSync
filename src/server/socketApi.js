@@ -89,6 +89,12 @@ const events = io.of('/events').on('connection', socket => {
     console.log(eventsList[eventName]); // ログ出力
   });
 
+  // 管理システム変更
+  socket.on('MSChange', data => {
+    socket.broadcast.emit('MSChange', data); // 送信
+    log('socket: MSChange', data); // ログ出力
+  });
+
   // 時刻同期
   socket.on('timeSync', data => {
     data.t2 = Date.now();

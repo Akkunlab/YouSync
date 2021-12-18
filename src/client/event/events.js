@@ -30,9 +30,10 @@ const events = {
       return;
     }
 
+    eventData.displayName = input.value;
     events.onClickBlocker({ target: { tagName: 'DIV' } });
     document.getElementById('entry').remove(); // entryコンポーネントを削除
-    socketEvents.send('join', { name: eventData.name, displayName: input.value }); // 送信
+    socketEvents.send('join', { name: eventData.name, displayName: eventData.displayName }); // 送信
     initThree(); // Three.js初期化
   },
 
@@ -89,6 +90,12 @@ const events = {
       target.firstChild.classList.toggle('is-hidden');
       target.lastChild.classList.toggle('is-show');
     }
+  },
+
+  onChangeMS(e) { // 管理システム変更イベント
+    const id = e.target.id;
+    const value = e.target.checked;
+    socketEvents.send('MSChange', { id, value }); // 送信
   },
 
   showDisplayName(name) { // 表示名を表示

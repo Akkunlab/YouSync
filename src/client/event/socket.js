@@ -39,6 +39,21 @@ socket.on('mDataDelete', data => {
   events.log('mDataDelete', mData); // ログ出力
 });
 
+  // 管理システム変更
+socket.on('MSChange', data => {
+  const func = {
+
+    ms_display_name() { // 表示名を表示
+      data.value ? events.showDisplayName(eventData.displayName): events.hiddenDisplayName();
+    }
+
+  };
+
+  func[data.id]();
+  events.log('MSChange', data); // ログ出力
+  console.log(eventData);
+});
+
 // 時刻同期
 socket.on('timeSync', data => {
   data.t4 = Date.now();

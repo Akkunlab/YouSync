@@ -1,6 +1,55 @@
 @use "sass:math";
 @import "common.scss";
 
+/* switch */
+.switch {
+  width: 60px;
+  height: 34px;
+  position: relative;
+  display: inline-block;
+
+  .switch_input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+
+    &:checked + .switch_slider {
+      background-color: $switch-on-color;
+    }
+    &:checked + .switch_slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    &:focus + .switch_slider {
+      box-shadow: 0 0 1px $switch-on-color;
+    }
+  }
+  .switch_slider,
+  .switch_slider:before {
+    position: absolute;
+    -webkit-transition: $transition-duration;
+    transition: $transition-duration;
+    border-radius: $item-border-radius;
+  }
+  .switch_slider {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    background-color: $switch-off-color;
+  }
+  .switch_slider:before {
+    left: 4px;
+    bottom: 4px;
+    width: 26px;
+    height: 26px;
+    content: "";
+    background-color: $text-primary-color;
+  }
+}
+
 /*------------------------------------
   Modal
 ------------------------------------*/
@@ -168,10 +217,25 @@
     
     .ms_title {
       font-size: 2em;
-      margin: 20px 0 0 0;
+      margin: 20px 0 5px 0;
     }
     .ms_contents {
 
+      .ms_all {
+        width: calc(100% - (2 * 10px));
+        margin: 0 10px;
+        display: flex;
+        border-top: solid 1px $border-color;
+        border-bottom: solid 1px $border-color;
+
+        .ms_all_label {
+          margin: .5em;
+          line-height: 34px;
+        }
+        .ms_all_switch {
+          margin: .5em 1em .5em 0;
+        }
+      }
       .ms_unit_list {
         display: flex;
         flex-wrap: wrap;
