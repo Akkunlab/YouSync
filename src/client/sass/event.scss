@@ -282,6 +282,9 @@
                 margin: .5em auto;
                 border-radius: $item-border-radius;
               }
+              .ms_unit_submit_button {
+                display: none;
+              }
             }
             .ms_unit_content.is-hidden {
               visibility: hidden;

@@ -4,7 +4,7 @@ const objects = {
 
   // ユニットを作成
   createUnits(data) {
-    let unitItem, itemInner, content, itemSettings, number, deley;
+    let unitItem, itemInner, content, itemSettings, number, deley, submit;
     const list = document.getElementById('unit_list');
     const array = Object.keys(data);
 
@@ -25,8 +25,10 @@ const objects = {
       content.textContent = data[array[i]].name;
       content.setAttribute('class', 'ms_unit_content');
 
-      itemSettings = document.createElement('div');
+      itemSettings = document.createElement('form');
       itemSettings.setAttribute('class', 'ms_unit_settings');
+      itemSettings.setAttribute('onsubmit', 'return false;');
+      itemSettings.setAttribute('value', data[array[i]].id);
 
       number = document.createElement('input');
       number.setAttribute('type', 'text');
@@ -37,9 +39,15 @@ const objects = {
       deley.setAttribute('type', 'number');
       deley.setAttribute('class', 'ms_unit_deley_input');
       deley.setAttribute('placeholder', 'delay');
+
+      submit = document.createElement('button');
+      submit.setAttribute('type', 'submit');
+      submit.setAttribute('class', 'ms_unit_submit_button');
+      submit.addEventListener('click', e => events.onSubmitUnitData(e)); // 送信イベント
       
       itemSettings.appendChild(number);
       itemSettings.appendChild(deley);
+      itemSettings.appendChild(submit);
       itemInner.appendChild(content);
       itemInner.appendChild(itemSettings);
       unitItem.appendChild(itemInner);

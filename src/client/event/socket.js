@@ -45,6 +45,15 @@ socket.on('MSChange', data => {
 
     ms_display_name() { // 表示名を表示
       data.value ? events.showDisplayName(eventData.displayName) : events.hiddenDisplayName();
+    },
+
+    ms_change_unit_data() { // UnitDataを変更
+      const display = document.getElementById('display_name').style.display;
+
+      eventData.displayName = data.value.number;
+      eventData.delay = data.value.delay;
+
+      if (display === 'block') events.showDisplayName(eventData.displayName);
     }
 
   };

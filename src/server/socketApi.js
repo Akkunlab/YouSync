@@ -91,7 +91,14 @@ const events = io.of('/events').on('connection', socket => {
 
   // 管理システム変更
   socket.on('MSChange', data => {
-    socket.broadcast.emit('MSChange', data); // 送信
+    
+    if (data.id === 'ms_change_unit_data') {
+      eventsList[eventName][data.value.id].myName = data.value.number; // 名前を更新
+      events.to(data.value.id).emit('MSChange', data); // 送信
+    } else {
+      socket.broadcast.emit('MSChange', data); // 送信
+    }
+
     log('socket: MSChange', data); // ログ出力
   });
 

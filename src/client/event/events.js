@@ -93,6 +93,27 @@ const events = {
     }
   },
 
+  onSubmitUnitData(e) { // UnitData送信イベント
+    const target = e.target;
+    const parent = target.parentNode;
+    const children = parent.childNodes;
+    const numberInput = children[0];
+    const delayInput = children[1];
+    const id = 'ms_change_unit_data';
+    const value = {
+      id: parent.getAttribute('value'),
+      number: numberInput.value,
+      delay: delayInput.value
+    };
+
+    socketEvents.send('MSChange', { id, value }); // 送信
+
+    // 設定画面を非表示
+    parent.parentNode.firstChild.textContent = numberInput.value;
+    parent.parentNode.firstChild.classList.toggle('is-hidden');
+    parent.classList.toggle('is-show');
+  },
+
   onChangeMS(e) { // 管理システム変更イベント
     const id = e.target.id;
     const value = e.target.checked;
